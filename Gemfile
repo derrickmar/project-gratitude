@@ -28,6 +28,12 @@ gem 'spring',        group: :development
 
 gem 'bower-rails'
 gem 'angular-rails-templates'
+gem 'devise'
+gem 'hirb'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 group :test, :development do
 	gem "rspec-rails", "~> 2.0"
