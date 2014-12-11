@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
-  before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
 
   # GET /users/:id.:format
   def show
@@ -31,16 +30,20 @@ class UsersController < ApplicationController
   def finish_signup
     # authorize! :update, @user 
     if request.patch? && params[:user] #&& params[:user][:email]
+      puts "IN FINISH_SIGNUP"
+      # TODO: This is currently still not the right way, but if we want to
+      # integrate a login with twitter that doesn't create a new user,
+      # we have to find an existing user and somehow
+      # integrate that with facebook
+      # if User.find_by(email: params[:user][:email])
+      #   puts "found existing user"
+      #   redirect_to user_omniauth_authorize_path(:facebook)
+        # redirect_to root_path
       if @user.update(user_params)
-        # @user.skip_reconfirmation!
+        @user.skip_reconfirmation!
         sign_in(@user, :bypass => true)
         redirect_to root_path, notice: 'Your profile was successfully updated.'
       else
-        puts "FAILED TO UPDATE"
-        puts current_user.errors.count
-        current_user.errors.full_messages.each do |msg|
-          puts msg
-        end
         @show_errors = true
       end
     end
@@ -57,13 +60,13 @@ class UsersController < ApplicationController
   end
   
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
+  def user_params
       accessible = [ :name, :email ] # extend with your own params
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
       params.require(:user).permit(accessible)
     end
-end
+  end
