@@ -42,6 +42,9 @@ group :test, :development do
 	gem "capybara"
 	gem "database_cleaner"
 	gem "selenium-webdriver"
+	# gem 'pry-byebug'
+	gem "better_errors"
+	gem "binding_of_caller"
 end
 
 group :production do
