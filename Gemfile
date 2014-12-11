@@ -31,8 +31,6 @@ gem 'angular-rails-templates'
 gem 'devise'
 gem 'hirb'
 
-gem 'omniauth'
-gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem "figaro"
 
