@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_REGEX = /\Achange@me/
 
   has_many :comments
-  has_many :posts
+  has_many :notes
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable

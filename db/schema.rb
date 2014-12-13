@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20141213203426) do
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
+    t.integer  "note_id"
+    t.integer  "user_id"
     t.string   "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,7 +34,8 @@ ActiveRecord::Schema.define(version: 20141213203426) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
-  create_table "posts", force: true do |t|
+  create_table "notes", force: true do |t|
+    t.integer  "user_id"
     t.integer  "likes"
     t.text     "desc"
     t.datetime "created_at"

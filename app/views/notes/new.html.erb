@@ -1,0 +1,5 @@
+<h1> Form to create a new note </h1>
+<%= form_for @note, url: { action: 'create' } do |f| %>
+	Description: <%= f.text_area :desc %>
+	<%= f.submit "Create new note" %>
+<% end %>

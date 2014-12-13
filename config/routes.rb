@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
 
   resources :users, only: [:show], shallow: true do
-    resources :posts
+    resources :notes
     resources :comments
   end
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'static_pages#home'
+  root 'notes#all'
 
 
   # Example of regular route:
