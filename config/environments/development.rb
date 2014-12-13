@@ -57,13 +57,5 @@ Rails.application.configure do
     password: ENV["PW"]
   }
 
-  #   config.action_mailer.smtp_settings = {
-  #   address: 'smtp.gmail.com', 
-  #   port: '587',
-  #   enable_starttls_auto: true,
-  #   user_name: 'someuser',
-  #   password: 'somepass',
-  #   authentication: :plain,
-  #   domain: 'somedomain.com'
-  # }
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

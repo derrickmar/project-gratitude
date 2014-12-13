@@ -13,6 +13,7 @@ gratitude.config([
         });
     }
 ]);
+
 gratitude.filter('range', function() {
     return function(input, total) {
         // total = parseInt(total);

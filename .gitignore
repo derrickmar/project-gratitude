@@ -16,7 +16,6 @@
 /tmp
 
 # My edits to ignore.
-database.yml
 doc/
 *.swp
 *~

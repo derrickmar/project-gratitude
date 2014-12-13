@@ -33,6 +33,7 @@ gem 'hirb'
 
 gem 'omniauth-facebook'
 gem "figaro"
+gem "paperclip", "~> 4.2"
 
 group :test, :development do
 	gem "rspec-rails", "~> 2.0"

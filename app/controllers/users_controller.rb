@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
 
+  def create
+    @user = User.create(user_params)
+  end
+
   # GET /users/:id.:format
   def show
-    # authorize! :read, @user
+    # authorize! :read, @user CANCAN
   end
 
   # GET /users/:id/edit
@@ -65,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-      accessible = [ :name, :email ] # extend with your own params
+      accessible = [ :name, :email, :avatar ] # extend with your own params
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
       params.require(:user).permit(accessible)
     end
