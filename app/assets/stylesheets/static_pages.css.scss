@@ -25,4 +25,37 @@
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }
+ }.masonry {
+    width: 100%;
+    margin-top: 10%;
+    height: 100%;
+}
+.item {
+    padding: 0;
+    padding-top: 10px;
+    height: auto;
+    width: 350px !important;
+    @media(min-width: 480px) {
+        width: 400px;
+    }
+    img {
+        border: 1px solid black;
+        width: 100%;
+        height: auto;
+        background-color: rgba(0, 0, 0, .75);
+          -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    }
+    .note {
+        position: absolute;
+        left: 0;
+        top: 20px;
+        width: 100%;
+        padding: 20px;
+        color: white;
+        font-size: 25px;
+    }
+}
