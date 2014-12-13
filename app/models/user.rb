@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
+  has_many :comments
+  has_many :posts
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
