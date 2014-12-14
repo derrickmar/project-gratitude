@@ -1,18 +1,18 @@
-$(document).ready(function(){
+$(document).ready(function() {
     modals.init();
     masonry.init();
-        });
+});
 
 var masonry = {
-        init: function() {
-            var container = $('.masonry')[0];
-            var msnry = new Masonry(container, {
-                columnWidth: '.item',
-                itemSelector: '.item',
-                'isFitWidth': true
-});
-            var imgLoad = imagesLoaded(container, function() {
-                msnry.layout();
+    init: function() {
+        var container = $('.masonry')[0];
+        var msnry = new Masonry(container, {
+            columnWidth: '.item',
+            itemSelector: '.item',
+            'isFitWidth': true
+        });
+        var imgLoad = imagesLoaded(container, function() {
+            msnry.layout();
         });
     }
 }
@@ -34,8 +34,8 @@ var modals = {
         $('.num-chars').text(total);
     },
     startModalShow: function() {
-        if (window.location.pathname == '/'){
-        $('#home-modal').modal('show');
+        if (window.location.pathname == '/') {
+            $('#home-modal').modal('show');
         }
         $('.make-note').on('click', function(e) {
             $('#home-modal').modal('hide');

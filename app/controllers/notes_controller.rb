@@ -2,6 +2,7 @@ class NotesController < ApplicationController
 	before_action :set_note, only: [:show, :edit, :update, :destroy]
 
 	def all
+		@note = Note.new
 		@notes = Note.all
 	end
 
