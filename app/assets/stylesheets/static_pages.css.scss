@@ -30,4 +30,144 @@
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }
+}
+.modal-content {
+    font-family: 'Special Elite', cursive;
+    margin-top: 10%;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: black;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    left: -140px;
+    right: 300px;
+}
+
+.modal-header {
+    h1 {
+        font-weight: 5;
+    }
+    h3 {
+        margin-top: -6px;
+        color: grey;
+    }
+}
+
+.modal-body {
+    .line {
+        width: 3px;
+        color: black;
+        height: 500px;
+    }
+    p {
+        font-size: 24px;
+        width: 80%;
+    }
+    h2 {
+        font-weight: 5;
+        color: blue;
+    }
+    height: auto;
+    .cta {
+        width: 100%;
+        margin-top: 4%;
+        height: 60px;
+        font-size: 25px;
+        background-color: #2980b9;
+        color: white;
+        transition: .5s;
+        &:hover {
+            color: #2980b9;
+            background-color: white;
+        }
+    }
+    .counter {
+        margin-top: -15%;
+        .number {
+            font-size: 40px;
+        }
+    }
+    .main-modal {
+    }
+}
+.masonry {
+    min-height: 900px;
+    width: 100%;
+    margin-top: 20%;
+    @media(min-width: 480px) {margin-top: 10%;}
+    height: 100%;
+}
+
+.item {
+    &:hover {
+        .info {
+            background: #3498db;
+        }
+        cursor: pointer;
+    }
+    padding: 0;
+    padding-top: 10px;
+    height: auto;
+    width: 360px !important;
+    @media(min-width: 480px) {
+        width: 400px;
+    }
+    img {
+        // border: 1px solid black;
+        width: 100%;
+        height: auto;
+        background-color: rgba(0, 0, 0, .75);
+          -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    }
+    .overlay {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        z-index: 20;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+    }
+    .note {
+        font-weight: 400;
+        position: absolute;
+        left: 0;
+        top: 20px;
+        width: 100%;
+        padding: 20px;
+        color: white;
+        font-size: 25px;
+    }
+    .info {
+        height: 60px;
+        width: 100%;
+        background: lightgrey;
+        .heart {
+            margin-top: 20px !important;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+    }
+}
+
+.note-form {
+    text-align: center;
+    width: 50%;
+}
+textarea{
+    margin-left: 47% !important;
+    font-size: 20px !important;
+    border: 1px solid black;
+}
+footer {
+    padding-top: 20px;
+    margin-top: 10px;
+    position: relative;
+    bottom: 0;
+    height: 100px;
+    background: lightgrey;
+}
