@@ -10,8 +10,9 @@
   </div>
   <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-right">
-     <% if user_signed_in? %>
-     <li><%= link_to "Create a new note", new_user_note_path(current_user) %></li>
+      <!-- if guest don't show sign out -->
+     <% if user_signed_in? && !user.is_guest %>
+     <li><%= link_to "Create a new note", new_note_path %></li>
      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
      <% else %>
      <li><%= link_to "Sign in", new_user_session_path %></li>

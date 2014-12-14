@@ -1,5 +1,7 @@
 <h1> Form to create a new note </h1>
-<%= form_for @note, url: { action: 'create' } do |f| %>
-	Description: <%= f.text_area :desc %>
+<%= form_for @note, url: { action: 'create' }, :html => { :multipart => true } do |f| %>
+	Description: <%= f.text_area :desc %><br />
+
+   <%= file_field(:image, :pic) %>
 	<%= f.submit "Create new note" %>
 <% end %>

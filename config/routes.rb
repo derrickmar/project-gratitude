@@ -3,10 +3,21 @@ Rails.application.routes.draw do
  
  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
 
-  resources :users, only: [:show], shallow: true do
-    resources :notes
-    resources :comments
+
+  # patch '/notes/:id/like', to: 'notes#like'
+  # patch '/notes/:id/like', to: 'notes#unlike'
+
+  resources :users, only: [:show]
+
+  resources :notes do
+    member do
+      patch 'like', to: 'notes#like'
+      patch 'unlike', to: 'notes#unlike'
+    end
   end
+  
+  resources :comments
+  resources :likes
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

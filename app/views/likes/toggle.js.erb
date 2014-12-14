@@ -1,0 +1,3 @@
+var container = $('.notes-holder').find("[data-noteid='" + "<%= escape_javascript @note.id.to_s %>" + "']");
+container.find("#num").html("Number of likes: " + "<%= escape_javascript @note.likes.count.to_s %>")
+container.find("#like").html("<%= escape_javascript render partial: 'shared/like_button', locals: { note: @note } %>");

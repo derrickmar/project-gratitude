@@ -1,5 +1,16 @@
-<ul>
+<ul class="notes-holder">
 	<% @notes.each do |n| %>
-		<li> <%= n.desc %> </li>
+		<li data-noteid=<%= n.id %>>
+			<%= link_to "Description: " + n.desc, n %>
+			<% n.images.each do |image| %>
+				<%= image_tag image.pic.url(:thumb) %>
+			<% end %>
+			<span id="num">
+				Number of likes: <%= n.likes.count %>
+			</span>	
+			<span id="like">
+				<%= render partial: 'shared/like_button', locals: { note: n } %>
+			</span>
+		</li>
 	<% end %>
 </ul>

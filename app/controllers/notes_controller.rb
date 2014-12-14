@@ -10,12 +10,23 @@ class NotesController < ApplicationController
 	end
 
 	def create
+		params[:note] = params[:note].merge(user_id: current_user.id)
 		@note = Note.new(note_params)
 		@note.save
+		@image = Image.create(image_params)
+		@note.images << @image
 		redirect_to root_path
 	end
 
 	def show
+		@comment = Comment.new
+		@comments = @note.comments
+	end
+
+	def like
+	end
+
+	def unlike
 	end
 
 	def edit
@@ -30,10 +41,14 @@ class NotesController < ApplicationController
 
 	private
 	def set_note
-		@note = note.find(params[:id])
+		@note = Note.find(params[:id])
 	end
 
 	def note_params
-		params.require(:note).permit(:desc)
+		params.require(:note).permit(:desc, :user_id)
+	end
+
+	def image_params
+		params.require(:image).permit(:pic)
 	end
 end

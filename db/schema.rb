@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213203426) do
+ActiveRecord::Schema.define(version: 20141214020341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,25 @@ ActiveRecord::Schema.define(version: 20141213203426) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
+  create_table "images", force: true do |t|
+    t.integer  "note_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+  end
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "note_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notes", force: true do |t|
     t.integer  "user_id"
-    t.integer  "likes"
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -64,6 +80,7 @@ ActiveRecord::Schema.define(version: 20141213203426) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "is_guest"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

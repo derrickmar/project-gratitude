@@ -44,6 +44,7 @@ group :test, :development do
 	# gem 'pry-byebug'
 	gem "better_errors"
 	gem "binding_of_caller"
+	gem "annotate"
 end
 
 group :production do
