@@ -1,17 +1,22 @@
-<ul class="notes-holder">
-	<% @notes.each do |n| %>
-		<li data-noteid=<%= n.id %>>
-			<%= link_to "Description: " + n.desc, n %>
-			<%= n.user.name %>
-			<% n.images.each do |image| %>
-				<%= image_tag image.pic.url(:thumb) %>
-			<% end %>
-			<span id="num">
-				Number of likes: <%= n.likes.count %>
-			</span>	
-			<span id="like">
-				<%= render partial: 'shared/like_button', locals: { note: n } %>
-			</span>
-		</li>
-	<% end %>
-</ul>
+<div class="container">
+    <div class="col-xs-12 text-center">
+        <h1>Project Gratitude</h1>
+    </div>
+    <div class="masonry text-center container-fluid">
+        <div class="row">
+        	<% @notes.each do |n| %>
+            <div class="col-md-3 col-sm-4 col-xs-12 item">
+                <% n.images.each do |image| %>
+									<%= image_tag image.pic.url(:thumb) %>
+								<% end %>
+                <div class='note'>
+                   <%= n.desc %>
+                </div>
+                <div class="info text-left">
+                    <i class="fa fa-heart-o heart"></i>
+                </div>
+            </div>
+          <% end %>
+        </div>
+  </div>
+</div>
