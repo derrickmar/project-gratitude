@@ -21,6 +21,7 @@ var modals = {
     init: function() {
         this.bindListeners();
         this.startModalShow();
+        $('.fb-share-button[data-href]') = window.location;
     },
     bindListeners: function() {
         $('.form-control').on('keydown', function() {
