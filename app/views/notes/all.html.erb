@@ -2,6 +2,7 @@
 	<% @notes.each do |n| %>
 		<li data-noteid=<%= n.id %>>
 			<%= link_to "Description: " + n.desc, n %>
+			<%= n.user.name %>
 			<% n.images.each do |image| %>
 				<%= image_tag image.pic.url(:thumb) %>
 			<% end %>

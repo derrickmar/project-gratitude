@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
+	before_action :current_or_guest_user
+	helper_method :current_or_guest_user
  	# Prevent CSRF attacks by raising an exception.
  	# For APIs, you may want to use :null_session instead.
  	protect_from_forgery with: :exception
@@ -16,25 +18,92 @@ class ApplicationController < ActionController::Base
 	end
 
 	# ======= CURRENT OR GUEST USER PERSISTANCE
-	def current_user
-		super || guest_user
+	# def current_user
+	# 	super || guest_user
+	# end
+
+	# private
+
+	# def guest_user
+	# 	# TODO: If can't find user catcth the NOT RECORD FOUND error and then create a new guest user
+	# 	if !session[:guest_user_id].nil?
+	# 		begin
+	# 			User.find(session[:guest_user_id])
+	# 		rescue ActiveRecord::RecordNotFound
+	# 			User.find(session[:guest_user_id] = create_guest_user.id)
+	# 		end
+	# 	else 
+	# 		User.find(session[:guest_user_id] = create_guest_user.id)
+	# 	end
+	# end
+
+	# def create_guest_user
+	# 	puts "CREATING GUEST USER"
+	# 	u = User.create(
+	# 		name: "guest",
+	# 		email: "guest_#{Time.now.to_i}#{rand(99)}@example.com",
+	# 		is_guest: true
+	# 		)
+	# 	u.skip_confirmation!
+	# 	u.save(:validate => false)
+	# 	u
+	# end
+
+
+	# if user is logged in, return current_user, else return guest_user
+	def current_or_guest_user
+		if current_user
+			if session[:guest_user_id] && session[:guest_user_id] != current_user.id
+				logging_in
+				guest_user(with_retry = false).try(:destroy)
+				session[:guest_user_id] = nil
+			end
+			current_user
+		else
+			guest_user
+		end
 	end
 
-	private
+	# find guest_user object associated with the current session,
+	# creating one as needed
+	def guest_user(with_retry = true)
+	    # Cache the value the first time it's gotten.
+	    @cached_guest_user ||= User.find(session[:guest_user_id] ||= create_guest_user.id)
 
-	def guest_user
-		# if session[:guest_user_id].nil?
-		# 	session[:guest_user_id] = create_guest_user.id
-		User.find(session[:guest_user_id].nil? ? session[:guest_user_id] = create_guest_user.id : session[:guest_user_id])
+	  rescue ActiveRecord::RecordNotFound # if session[:guest_user_id] invalid
+	  	session[:guest_user_id] = nil
+	  	guest_user if with_retry
+	  end
+
+	# called (once) when the user logs in, insert any code your application needs
+	# to hand off from guest_user to current_user.
+	def logging_in
+		guest_comments = guest_user.comments.all
+		guest_comments.each do |comment|
+			comment.user_id = current_user.id
+			comment.save!
+		end
+		guest_notes = guest_user.notes.all
+		guest_notes.each do |note|
+			note.user_id = current_user.id
+			note.save!
+		end
+		guest_likes = guest_user.likes.all
+		guest_likes.each do |like|
+			like.user_id = current_user.id
+			like.save!
+		end
 	end
 
 	def create_guest_user
 		u = User.create(
-			name: "guest",
-			email: "guest_#{Time.now.to_i}#{rand(99)}@example.com",
+			:name => "Guest",
+			:email => "guest_#{Time.now.to_i}#{rand(100)}@example.com",
 			is_guest: true
 			)
-		u.save(:validate => false)
+		u.skip_confirmation!
+		u.save!(:validate => false)
+		session[:guest_user_id] = u.id
 		u
 	end
 

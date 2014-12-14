@@ -2,9 +2,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@note = Note.find(params[:comment][:note_id])
-		if user_signed_in?
-			params[:comment] = params[:comment].merge(user_id: current_user.id)
-		end
+		params[:comment] = params[:comment].merge(user_id: current_or_guest_user.id)
 		@comment = Comment.new(comment_params)
 		respond_to do |format|
 			if @comment.save

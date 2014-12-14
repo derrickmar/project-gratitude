@@ -10,7 +10,7 @@ class NotesController < ApplicationController
 	end
 
 	def create
-		params[:note] = params[:note].merge(user_id: current_user.id)
+		params[:note] = params[:note].merge(user_id: current_or_guest_user.id)
 		@note = Note.new(note_params)
 		@note.save
 		@image = Image.create(image_params)
