@@ -27,28 +27,44 @@
     text-align: left;
 }
 .modal-content {
+    font-family: 'Special Elite', cursive;
     margin-top: 10%;
-    background: rgba(0, 0, 0, 0.8) !important;
-    color: white;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: black;
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
     left: -140px;
     right: 300px;
 }
+
+.modal-header {
+    h1 {
+        font-weight: 5;
+    }
+    h3 {
+        margin-top: -6px;
+        color: grey;
+    }
+}
+
 .modal-body {
     .line {
         width: 3px;
-        color: white;
+        color: black;
         height: 500px;
     }
     p {
-        font-size: 18px;
+        font-size: 24px;
         width: 80%;
+    }
+    h2 {
+        font-weight: 5;
+        color: blue;
     }
     height: auto;
     .cta {
-        width: 60%;
+        width: 100%;
         margin-top: 4%;
         height: 60px;
         font-size: 25px;
@@ -61,7 +77,10 @@
         }
     }
     .counter {
-        margin-top: -20%;
+        margin-top: -15%;
+        .number {
+            font-size: 40px;
+        }
     }
     .main-modal {
     }
