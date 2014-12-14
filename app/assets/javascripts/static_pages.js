@@ -21,6 +21,7 @@ var modals = {
     init: function() {
         this.bindListeners();
         this.startModalShow();
+        $('.fb-share-button[data-href]').val(window.location);
     },
     bindListeners: function() {
         $('.form-control').on('keydown', function() {
@@ -34,7 +35,8 @@ var modals = {
         $('.num-chars').text(total);
     },
     startModalShow: function() {
-        if (window.location.pathname == '/') {
+        if (window.location.pathname == '/' && localStorage.visited !== 'true'){
+            localStorage.visited = true;
             $('#home-modal').modal('show');
         }
         $('.make-note').on('click', function(e) {
