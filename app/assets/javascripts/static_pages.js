@@ -40,6 +40,13 @@ var modals = {
         $('.make-note').on('click', function(e) {
             $('#home-modal').modal('hide');
             $('#createModal').modal('show');
-        })
+        });
+        $('.create').on('click', function() {
+            console.log($('.create').val())
+            if ($('.create').val().length > 5) {
+                $('#createModal').hide();
+                $('#shareModal').modal('show');
+            }
+        });
     }
     }
