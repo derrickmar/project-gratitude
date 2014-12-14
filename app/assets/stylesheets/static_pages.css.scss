@@ -78,8 +78,10 @@
         height: 60px;
         width: 100%;
         background: lightgrey;
-        .fa-heart {
+        .heart {
             margin-top: 20px !important;
+            margin-left: 10px;
+            font-size: 20px;
         }
     }
 }
