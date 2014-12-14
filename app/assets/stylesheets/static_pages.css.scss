@@ -27,6 +27,7 @@
     text-align: left;
 }
 .modal-content {
+    margin-top: 10%;
     background: rgba(0, 0, 0, 0.8) !important;
     color: white;
     width: 1200px;
@@ -36,8 +37,34 @@
     right: 300px;
 }
 .modal-body {
-
+    .line {
+        width: 3px;
+        color: white;
+        height: 500px;
+    }
+    p {
+        font-size: 18px;
+        width: 80%;
+    }
     height: auto;
+    .cta {
+        width: 60%;
+        margin-top: 4%;
+        height: 60px;
+        font-size: 25px;
+        background-color: #2980b9;
+        color: white;
+        transition: .5s;
+        &:hover {
+            color: #2980b9;
+            background-color: white;
+        }
+    }
+    .counter {
+        margin-top: -20%;
+    }
+    .main-modal {
+    }
 }
 .masonry {
     width: 100%;
@@ -85,47 +112,7 @@
         }
     }
 }
-.note-example {
-    clear: both;
-    position: absolute;
-    left: 20px;
-    top: 140px;
-    width: 100%;
-    padding: 20px;
-    color: black;
-    font-size: 25px;
-}
-.counter {
-    .count, .started {
-        padding: 5px;
-        border: 3px solid white;
-    }
-    .count {border-bottom: none;}
-    font-size: 18px;
-    position: absolute;
-    top: 0; right: 0px;
-}
-.cta {
-   button{
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
-  background: #1abc9c;
-  border: 1px solid #1abc9c;
-  font-size: 25px;
-  color: white;
-  width: 500px;
-  height: 50px;
-  &:hover {
-    background: white;
-    color: #1abc9c
-}
-}
-top: -200px;
-}
+
 textarea{
     border: 1px solid black;
     width: 50% !important;

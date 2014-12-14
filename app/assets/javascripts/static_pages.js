@@ -34,7 +34,9 @@ var modals = {
         $('.num-chars').text(total);
     },
     startModalShow: function() {
+        if (window.location.pathname == '/'){
         $('#home-modal').modal('show');
+        }
         $('.make-note').on('click', function(e) {
             $('#home-modal').modal('hide');
             $('#createModal').modal('show');
