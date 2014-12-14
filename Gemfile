@@ -27,13 +27,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'bower-rails'
-gem 'angular-rails-templates'
 gem 'devise'
 gem 'hirb'
 
 gem 'omniauth-facebook'
 gem "figaro"
 gem "paperclip", "~> 4.2"
+gem 'aws-sdk'
 
 group :test, :development do
 	gem "rspec-rails", "~> 2.0"
