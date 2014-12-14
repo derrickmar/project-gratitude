@@ -25,11 +25,27 @@
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }.masonry {
+}
+.modal-content {
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: white;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    left: -140px;
+    right: 300px;
+}
+.modal-body {
+
+    height: auto;
+}
+.masonry {
     width: 100%;
-    margin-top: 10%;
+    margin-top: 20%;
+    @media(min-width: 480px) {margin-top: 10%;}
     height: 100%;
 }
+
 .item {
     padding: 0;
     padding-top: 10px;
@@ -39,7 +55,7 @@
         width: 400px;
     }
     img {
-        border: 1px solid black;
+        // border: 1px solid black;
         width: 100%;
         height: auto;
         background-color: rgba(0, 0, 0, .75);
@@ -58,4 +74,69 @@
         color: white;
         font-size: 25px;
     }
+    .info {
+        height: 60px;
+        width: 100%;
+        background: lightgrey;
+        .fa-heart {
+            margin-top: 20px !important;
+        }
+    }
+}
+.note-example {
+    clear: both;
+    position: absolute;
+    left: 20px;
+    top: 140px;
+    width: 100%;
+    padding: 20px;
+    color: black;
+    font-size: 25px;
+}
+.counter {
+    .count, .started {
+        padding: 5px;
+        border: 3px solid white;
+    }
+    .count {border-bottom: none;}
+    font-size: 18px;
+    position: absolute;
+    top: 0; right: 0px;
+}
+.cta {
+   button{
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+  background: #1abc9c;
+  border: 1px solid #1abc9c;
+  font-size: 25px;
+  color: white;
+  width: 500px;
+  height: 50px;
+  &:hover {
+    background: white;
+    color: #1abc9c
+}
+}
+top: -200px;
+}
+textarea{
+    border: 1px solid black;
+    width: 50% !important;
+    left: 0;
+}
+.note-form ul li {
+    display: inline-block;
+}
+footer {
+    padding-top: 20px;
+    margin-top: 10px;
+    position: relative;
+    bottom: 0;
+    height: 100px;
+    background: lightgrey;
 }
