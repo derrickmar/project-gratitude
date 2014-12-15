@@ -1,0 +1,11 @@
+var content = '<div class="col-md-3 col-sm-4 col-xs-12 note-holder">\
+				<%= @note.images.each do |image| %>\
+					<%= image_tag image.pic.url(:medium) %>\
+				<% end %>\
+				<div class="note">\
+                   <%= @note.desc %>\
+                </div>\
+                <div class="info text-left">\
+                    <i class="fa fa-heart-o heart"></i>\
+                </div>'
+$('.notes-holder').prepend(content);

@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	before_action :current_or_guest_user
 	helper_method :current_or_guest_user
- 	# Prevent CSRF attacks by raising an exception.
- 	# For APIs, you may want to use :null_session instead.
- 	protect_from_forgery with: :exception
+ 	# ADD protect_from_forgery to every controller to support ajax requests for guests
+ 	# https://github.com/plataformatec/devise/wiki/How-To:-Create-a-guest-user
+ 	# protect_from_forgery with: :exception
 
  	def ensure_signup_complete
 		# Ensure we don't go into an infinite loop

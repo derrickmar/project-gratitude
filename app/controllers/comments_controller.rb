@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	protect_from_forgery	
 
 	def create
 		@note = Note.find(params[:comment][:note_id])

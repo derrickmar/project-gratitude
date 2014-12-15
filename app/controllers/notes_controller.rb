@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+	protect_from_forgery :except => :create
 	before_action :set_note, only: [:show, :edit, :update, :destroy]
 
 	def all
@@ -13,10 +14,19 @@ class NotesController < ApplicationController
 	def create
 		params[:note] = params[:note].merge(user_id: current_or_guest_user.id)
 		@note = Note.new(note_params)
-		@note.save
-		@image = Image.create(image_params)
-		@note.images << @image
-		redirect_to root_path
+		respond_to do |format|
+			if @note.save
+				if !params[:image].nil?
+					@image = Image.create(image_params)
+					@note.images << @image
+				end
+				format.html { redirect_to root_path } # support a non-ajax call
+				format.js
+			else
+				format.html { redirect_to root_path }
+				format.js { render :template => 'notes/error.js.erb' }
+			end
+		end
 	end
 
 	def show

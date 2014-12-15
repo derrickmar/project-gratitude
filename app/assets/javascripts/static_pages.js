@@ -43,12 +43,10 @@ var modals = {
             $('#home-modal').modal('hide');
             $('#createModal').modal('show');
         });
-        $('.create').on('click', function() {
-            console.log($('.create').val())
-            if ($('.create').val().length > 5) {
-                $('#createModal').hide();
-                $('#shareModal').modal('show');
-            }
+        $('#create-note-button').on('click', function() {
+            console.log('Clicked note button');
+            $('#createModal').hide();
+            $('#shareModal').modal('show');
         });
     }
 }

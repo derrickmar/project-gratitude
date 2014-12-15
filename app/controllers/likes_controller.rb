@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+	protect_from_forgery :except => [:create, :destroy]
+
 
 	def create
 		@like = Like.new(like_params)
