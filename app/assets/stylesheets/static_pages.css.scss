@@ -3,27 +3,101 @@
 // $header = #f1f1f1
 // $dark-grey = #999999
 
+//html { 
+//  background: image-url("pinboard.jpeg") repeat-y center center fixed; 
+//  -webkit-background-size: cover;
+//  -moz-background-size: cover;
+//  -o-background-size: cover;
+//  background-size: cover;
+//}
+
+@mixin transition {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+body {
+    background-image: image-url("square.jpg");
+    background-size: 250px 250px;
+//    background-size: cover;
+//    background-repeat: repeat-y;
+//    background-repeat: repeat-x;
+}
+
+.hidden {
+    display: none;
+}
+
+//.navbar-brand, .navbar-toggle,
+//.navbar-nav li a.widen {
+//    line-height: 80px;
+//    height: 80px;
+//    padding-top: 0;
+//}
+
+//.navbar-toggle {
+//    height: 40px;
+//    margin-top: 20px;
+//    margin-bottom: 20px;
+//    padding: 0 5px !important;
+//    z-index: 1;
+//}
+
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    .content {
+        position: relative;
+        display: inline-block;
+        a {
+            color: black;
+            font-family: 'Special Elite', cursive;
+            font-size: 24px;
+            padding: 10px 15px 5px 15px;
+            background-color: white;
+            line-height: 100px;
+            text-decoration: none;
+        }
+        .pin {
+            position: absolute;
+            left: -17px;
+            top: -20px;
+            width: 60px;
+            height: auto;
+        }   
+    }
+}
+
+
 /*flash*/
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
     text-align: left;
- }
+}
 
 .alert-alert {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
     text-align: left;
- }
+}
 
 .alert-success {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }
+}
 
 .alert-notice {
     background-color: #dff0d8;
@@ -95,60 +169,38 @@
     height: 100%;
 }
 
-.note-holder {
-    &:hover {
-        .info {
-            background: #3498db;
+//.note {
+//    font-weight: 400;
+//    position: absolute;
+//    left: 0;
+//    top: 20px;
+//    width: 100%;
+//    color: white;
+//    font-size: 25px;
+//}
+
+.notes-holder {
+    transform: rotate(-7deg);
+
+    .note-image {
+        border: 10px solid white;
+        padding: 0 !important;
+
+        img {
+            width: 100%;
+            height: auto;
+            background-color: rgba(0, 0, 0, .75);
         }
-        cursor: pointer;
-    }
-    padding: 0;
-    padding-top: 10px;
-    height: auto;
-    width: 360px !important;
-    @media(min-width: 480px) {
-        width: 400px;
-    }
-    img {
-        // border: 1px solid black;
-        width: 100%;
-        height: auto;
-        background-color: rgba(0, 0, 0, .75);
-          -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    }
-    .overlay {
-        overflow: hidden;
-        position: absolute;
-        top: 0;
-        z-index: 20;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
     }
     .note {
-        font-weight: 400;
-        position: absolute;
-        left: 0;
-        top: 20px;
-        width: 100%;
-        padding: 20px;
-        color: white;
-        font-size: 25px;
+        background-color: white;
     }
-    .info {
-        height: 60px;
-        width: 100%;
-        background: lightgrey;
-        .heart {
-            margin-top: 20px !important;
-            margin-left: 10px;
-            font-size: 20px;
-        }
-    }
+}
+
+.image-preview {
+    height: 200px;
+    width: auto;
+    @include transition;
 }
 
 .note-form {
@@ -158,7 +210,7 @@
 textarea{
 //    margin-left: 47% !important;
 //    font-size: 20px !important;
-    border: 1px solid black;
+border: 1px solid black;
 }
 footer {
     padding-top: 20px;

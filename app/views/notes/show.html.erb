@@ -4,15 +4,26 @@
 <% end %>
 
 <h2> Comments </h2>
-<ul>
+<ul class="comments-box">
 <% @note.comments.each do |c| %>
 	<li> <%= c.desc %> --> By <%= c.user.name %> </li>
 <% end %>
 </ul>
 
 <h2> Add a comment </h2>
-<%= form_for @comment do |f| %>
+<%= form_for @comment, remote: true do |f| %>
 	Description: <%= f.text_area :desc %>
 	<%= f.hidden_field :note_id, :value => @note.id %>
 	<%= f.submit "Add Comment" %>
+<% end %>
+
+<%= link_to(@note, class: "col-md-3 col-sm-4 col-xs-12 note-holder", remote: true) do %>
+    <div class="note-image">
+        <% @note.images.each do |image| %>
+		<%= image_tag image.pic.url(:medium) %>
+	<% end %>
+    </div>
+    <div class='note'>
+        <%= @note.desc %>
+    </div>
 <% end %>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+<div class="modal fade" id="create-modal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,12 +13,20 @@
               <%= form_for @note, url: { action: 'create' },
               :html => { :multipart => true, class: 'form-group' }, remote: true do |f| %>
               <%= f.text_area :desc, class: 'form-control create', rows: '3', placeholder: "I'm grateful for...", maxlength: '250'%><br />
-              <i class="fa fa-picture-o">&nbsp;
-                <%= file_field(:image, :pic) %>
-              </i>
+              <input type="file" name="image[pic]" id="image-select" class="hidden" onchange="handleFiles(this.files)" accept="image/*"/>
+              <div id="image-btn" class="btn btn-primary"> Choose image </div>
+              <div class="image-preview-holder"></div>
               <%= f.submit "Create new note", class: 'btn col-xs-10 col-xs-offset-1 cta', id: 'create-note-button' %>
               <% end %>
+              <!-- Do multiple for multiple files -->
               <div class="num-chars">250</div>
+
+              <%= form_for(Image.new, html: { multipart: true, id: 'image_upload', class: "dropzone"}) do |f|  %>
+              <div class="fallback">
+                <%= f.file_field :image %><br>
+                <%= f.submit "Upload" %>
+              </div>
+              <% end %>
             </div>
           </div>
         </div>

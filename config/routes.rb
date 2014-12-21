@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # patch '/notes/:id/like', to: 'notes#unlike'
 
   resources :users, only: [:show]
+  resources :images, only: [:update, :create, :destroy]
 
   resources :notes do
     member do

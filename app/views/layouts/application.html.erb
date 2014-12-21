@@ -6,11 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1474748476106477&version=v2.0";
-      fjs.parentNode.insertBefore(js, fjs);
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1474748476106477&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
   <script type="text/javascript" src='http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js'></script>
   <script type="text/javascript" src='http://masonry.desandro.com/masonry.pkgd.min.js'></script>
@@ -20,22 +20,25 @@
 </head>
 <body>
 
-    <%= render 'shared/header' %>
-    <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>">
-        <a href="#" data-dismiss="alert" class="close">×</a>
-        <ul>
-            <li>
-              <%= value %>
-          </li>
-      </ul>
-  </div>
-  <% end %>
-
-  <%= yield %>
+  <%= render 'shared/header' %>
   <%= render 'modals/home' %>
   <%= render 'modals/create' %>
   <%= render 'modals/share' %>
+  <%= render 'modals/show_note' %>
+
+  <div class="container">
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <ul>
+        <li>
+          <%= value %>
+        </li>
+      </ul>
+    </div>
+    <% end %>
+    <%= yield %>
+  </div>
   <%= render 'shared/footer' %>
 </body>
 </html>

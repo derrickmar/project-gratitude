@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-	protect_from_forgery :except => :create
+	protect_from_forgery :except => [:create, :show]
 	before_action :set_note, only: [:show, :edit, :update, :destroy]
 
 	def all
@@ -30,8 +30,14 @@ class NotesController < ApplicationController
 	end
 
 	def show
+		puts "PARAMS"
+		puts params
 		@comment = Comment.new
 		@comments = @note.comments
+		respond_to do |format|
+			format.html { @note } # support a non-ajax call
+			format.js
+		end
 	end
 
 	def like
