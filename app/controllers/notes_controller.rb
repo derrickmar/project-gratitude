@@ -33,7 +33,6 @@ class NotesController < ApplicationController
 		puts "PARAMS"
 		puts params
 		@comment = Comment.new
-		@comments = @note.comments
 		respond_to do |format|
 			format.html { @note } # support a non-ajax call
 			format.js

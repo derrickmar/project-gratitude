@@ -1,25 +1,4 @@
-console.log('running!!');
+var container = $('#show-note-modal').find('.modal-body');
+container.empty();
+container.html("<%= escape_javascript render('note') %>");
 $('#show-note-modal').modal('show');
-alert("Hello! I am an alert box!!");
-// var content = '<%= @note.desc %>\
-//           <% @note.images.each do |image| %>\
-//           <%= image_tag image.pic.url(:thumb) %>\
-//           <% end %>\
-
-//           <h2> Comments </h2>\
-//           <ul>\
-//             <% @note.comments.each do |c| %>\
-//             <li> <%= c.desc %> --> By <%= c.user.name %> </li>\
-//             <% end %>\
-//           </ul>\
-
-//           <h2> Add a comment </h2>\
-//             <%= form_for @comment do |f| %>\
-//             Description: <%= f.text_area :desc %>\
-//             <%= f.hidden_field :note_id, :value => @note.id %>\
-//             <%= f.submit "Add Comment" %>\
-//           <% end %>';
-
-// var container = $('#show-note-modal').find('.modal-body');
-// container.empty();
-// container.html(content);

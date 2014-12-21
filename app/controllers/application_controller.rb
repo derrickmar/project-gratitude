@@ -17,38 +17,6 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	# ======= CURRENT OR GUEST USER PERSISTANCE
-	# def current_user
-	# 	super || guest_user
-	# end
-
-	# private
-
-	# def guest_user
-	# 	# TODO: If can't find user catcth the NOT RECORD FOUND error and then create a new guest user
-	# 	if !session[:guest_user_id].nil?
-	# 		begin
-	# 			User.find(session[:guest_user_id])
-	# 		rescue ActiveRecord::RecordNotFound
-	# 			User.find(session[:guest_user_id] = create_guest_user.id)
-	# 		end
-	# 	else 
-	# 		User.find(session[:guest_user_id] = create_guest_user.id)
-	# 	end
-	# end
-
-	# def create_guest_user
-	# 	puts "CREATING GUEST USER"
-	# 	u = User.create(
-	# 		name: "guest",
-	# 		email: "guest_#{Time.now.to_i}#{rand(99)}@example.com",
-	# 		is_guest: true
-	# 		)
-	# 	u.skip_confirmation!
-	# 	u.save(:validate => false)
-	# 	u
-	# end
-
 
 	# if user is logged in, return current_user, else return guest_user
 	def current_or_guest_user
