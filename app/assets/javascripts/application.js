@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 //= require turbolinks
-//= require masonry.pkgd.min.js
-//= require imagesloaded.pkgd.min.js
+//= require masonry.js
+//= require imagesloaded.js
 //= require_tree .
