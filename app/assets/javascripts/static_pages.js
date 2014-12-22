@@ -1,13 +1,6 @@
-$(window).load(function() {
+$(document).ready(function() {
     modals.init();
-    // masonry.init();
-    $('.masonry').masonry({
-        "itemSelector": '.note-holder',
-        // columnWidth: function(containerWidth) {
-        //     return containerWidth / 6;
-        // },
-        "gutter": 10
-    });
+
     var fileSelect = $('#image-select'),
         fileElem = $('#image-btn');
 
@@ -49,6 +42,22 @@ $(window).load(function() {
     // })
 });
 
+$(window).load(function() {
+    var $container = $('.masonry');
+    $container.masonry({
+        "itemSelector": '.note-holder',
+        "columnWidth": 130,
+        // columnWidth: function(containerWidth) {
+        //     return containerWidth / 7;
+        // },
+        "gutter": 10
+    });
+
+    $container.imagesLoaded(function() {
+        $container.masonry();
+    });
+})
+
 function handleFiles(files) {
     console.log('calling handle files');
     for (var i = 0; i < files.length; i++) {
@@ -79,22 +88,23 @@ function handleFiles(files) {
     }
 }
 
-var masonry = {
-    init: function() {
-        $('.masonry').masonry({
-            "itemSelector": '.note-holder',
-            // "columnWidth": ".note-holder",
-            columnWidth: function(containerWidth) {
-                return containerWidth / 4;
-            },
-            "gutter": 10
-        });
-        
-        $('.masonry').imagesLoaded({
-            msnry.layout();
-        });
-    }
-}
+// var masonry = {
+//     init: function() {
+//         var $container = $('.masonry');
+//         $container.masonry({
+//             "itemSelector": '.note-holder',
+//             // "columnWidth": ".note-holder",
+//             columnWidth: function(containerWidth) {
+//                 return containerWidth;
+//             },
+//             "gutter": 10
+//         });
+
+//         $container.imagesLoaded(function() {
+//             $container.masonry();
+//         });
+//     }
+// }
 
 var modals = {
     init: function() {

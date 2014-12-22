@@ -1,0 +1,13 @@
+<%= link_to(@note, class: "col-md-3 col-sm-4 col-xs-12 note-holder", remote: true) do %>
+	<% if !@note.images.empty? %>
+		<% @note.images.each do |image| %>
+			<%= image_tag image.pic.url(:medium) %>
+		<% end %>
+	<% end %>
+	<div class="note">
+		<%= @note.desc %>
+	</div>
+	<div class="info text-left">
+		<i class="fa fa-heart-o heart"></i>
+	</div>
+<% end %>
