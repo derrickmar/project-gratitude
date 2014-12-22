@@ -198,10 +198,13 @@ body {
         margin-bottom: 20px;
         border: 10px solid white;
         word-wrap: break-word;
+        text-decoration: none;
+        color: black;
 
 
         .note-image {
             padding: 0 !important;
+            margin-bottom: 10px;
 
             img {
                 width: 100%;
@@ -211,6 +214,7 @@ body {
         }
         .note {
             background-color: white;
+            font-size: 16px;
         }
     }
 }
@@ -261,7 +265,7 @@ footer {
 }
 
 .comments {
-        color: #34495e !important;
+    color: #34495e !important;
     h3 {
         color: #34495e !important;
     }

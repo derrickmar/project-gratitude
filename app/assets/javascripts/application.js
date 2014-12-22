@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require dropzone.min
 //= require bootstrap-sass-official/assets/javascripts/bootstrap/modal
+//= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 //= require turbolinks
 //= require_tree .

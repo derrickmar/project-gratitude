@@ -31,8 +31,6 @@ class NotesController < ApplicationController
 	end
 
 	def show
-		puts "PARAMS"
-		puts params
 		@comment = Comment.new
 		respond_to do |format|
 			format.html { @note } # support a non-ajax call
