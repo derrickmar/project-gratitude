@@ -1,17 +1,32 @@
-<%= @note.desc %>
-<% @note.images.each do |image| %>
-<%= image_tag image.pic.url(:thumb) %>
-<% end %>
-<h2> Comments </h2>
-<ul>
-  <% @note.comments.each do |c| %>
-  <li> <%= c.desc %> --> By <%= c.user.name %> </li>
-  <% end %>
-</ul>
+    <div class="row">
+        <div class="note-desc col-xs-12">
+            "<%= @note.desc %>"
+            -<%= @note.user.name %>
+        </div>
+        <div class="col-xs-12">
+            <% @note.images.each do |image| %>
+            <%= image_tag image.pic.url(:thumb), class: 'single-note-image' %>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <br>
+        <div class="col-xs-12 comments">
+            <h3> Comments </h3>
+        </div>
+        <div class="col-xs-12">
+        <ul>
+          <% @note.comments.each do |c| %>
+          <li class='comment'> <%= c.desc %> - <%= c.user.name %> </li>
+          <% end %>
+      </ul>
+      </div>
+  </div>
 
-<h2> Add a comment </h2>
-<%= form_for Comment.new do |f| %>
-Description: <%= f.text_area :desc %>
-<%= f.hidden_field :note_id, :value => @note.id %>
-<%= f.submit "Add Comment" %>
-<% end %>
+  <h2 class='comments'> Add a comment </h2>
+  <%= form_for Comment.new do |f| %>
+  <%= f.text_area :desc, class: 'form-control comment-form' %>
+  <%= f.hidden_field :note_id, :value => @note.id %>
+  <br>
+  <%= f.submit "Add Comment", class: 'btn btn-lg comment-button' %>
+  <% end %>
