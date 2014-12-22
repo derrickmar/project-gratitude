@@ -3,8 +3,8 @@
 // $header = #f1f1f1
 // $dark-grey = #999999
 
-//html { 
-//  background: image-url("pinboard.jpeg") repeat-y center center fixed; 
+//html {
+//  background: image-url("pinboard.jpeg") repeat-y center center fixed;
 //  -webkit-background-size: cover;
 //  -moz-background-size: cover;
 //  -o-background-size: cover;
@@ -82,7 +82,7 @@ body {
             top: -20px;
             width: 60px;
             height: auto;
-        }   
+        }
     }
 }
 
@@ -228,6 +228,7 @@ textarea{
 //    font-size: 20px !important;
 border: 1px solid black;
 }
+
 footer {
     padding-top: 20px;
     margin-top: 10px;
@@ -235,4 +236,39 @@ footer {
     bottom: 0;
     height: 100px;
     background: lightgrey;
+}
+
+.note-desc {
+    margin-top: 5px;
+    font-size: 22px;
+    @media(min-width: 480px) {
+        font-size: 25px;
+    }
+    @media(min-width: 600px) {
+        font-size: 30px;
+    }
+}
+.comment-button {
+    background-color: #2c3e50;
+    color: white;
+    transition: .3s;
+    &:hover {
+        background-color: white;
+        color: #2c3e50 !important;
+    }
+}
+
+.comments {
+        color: #34495e !important;
+    h3 {
+        color: #34495e !important;
+    }
+}
+.comment-form {
+    width: 50% !important;
+}
+.comment {
+    font-size: 18px;
+    margin-top: 5px;
+    border-bottom: 1px solid black;
 }
