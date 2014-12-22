@@ -32,6 +32,11 @@ body {
     display: none;
 }
 
+.dropzone {
+    text-align: center;
+    min-height: 300px;
+}
+
 //.navbar-brand, .navbar-toggle,
 //.navbar-nav li a.widen {
 //    line-height: 80px;
@@ -180,20 +185,26 @@ body {
 //}
 
 .notes-holder {
-    transform: rotate(-7deg);
-
-    .note-image {
-        border: 10px solid white;
-        padding: 0 !important;
-
-        img {
-            width: 100%;
-            height: auto;
-            background-color: rgba(0, 0, 0, .75);
-        }
+    .grid-sizer { 
+        width: 20%;
     }
-    .note {
+    .note-holder {
+        padding: 10px;
         background-color: white;
+        margin-bottom: 20px;
+        .note-image {
+            border: 10px solid white;
+            padding: 0 !important;
+
+            img {
+                width: 100%;
+                height: auto;
+                background-color: rgba(0, 0, 0, .75);
+            }
+        }
+        .note {
+            background-color: white;
+        }
     }
 }
 

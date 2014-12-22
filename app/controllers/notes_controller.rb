@@ -12,15 +12,17 @@ class NotesController < ApplicationController
 	end
 
 	def create
+		puts params[:image_id_for_note]
 		params[:note] = params[:note].merge(user_id: current_or_guest_user.id)
 		@note = Note.new(note_params)
 		respond_to do |format|
 			if @note.save
-				if !params[:image].nil?
-					@image = Image.create(image_params)
+				if params[:image_id_for_note] != ""
+					puts "IMAGE EXISTS --> Creating association with note"
+					@image = Image.find(params[:image_id_for_note])
 					@note.images << @image
 				end
-				format.html { redirect_to root_path } # support a non-ajax call
+				format.html { redirect_to root_path }
 				format.js
 			else
 				format.html { redirect_to root_path }

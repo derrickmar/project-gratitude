@@ -33,16 +33,17 @@ gem 'omniauth-facebook'
 gem "figaro"
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
+gem 'masonry-rails'
+
 
 group :test, :development do
+	gem "better_errors"
+	gem "binding_of_caller"
 	gem "rspec-rails", "~> 2.0"
 	gem "factory_girl_rails", "~> 4.0"
 	gem "capybara"
 	gem "database_cleaner"
 	gem "selenium-webdriver"
-	# gem 'pry-byebug'
-	gem "better_errors"
-	gem "binding_of_caller"
 	gem "annotate"
 end
 

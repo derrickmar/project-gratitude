@@ -9,15 +9,25 @@
         <p class='text-center'>Your note stays anonymous. <br>So you can write whatever you want. Just write what comes to your mind first.</p>
         <div class="modal-body">
           <div class="row">
-            <div class="col-sm-12">
-              <%= form_for @note, url: { action: 'create' },
-              :html => { :multipart => true, class: 'form-group' }, remote: true do |f| %>
-              <%= f.text_area :desc, class: 'form-control create', rows: '3', placeholder: "I'm grateful for...", maxlength: '250'%><br />
-              <input type="file" name="image[pic]" id="image-select" class="hidden" onchange="handleFiles(this.files)" accept="image/*"/>
-              <div id="image-btn" class="btn btn-primary"> Choose image </div>
-              <div class="image-preview-holder"></div>
-              <%= f.submit "Create new note", class: 'btn col-xs-10 col-xs-offset-1 cta', id: 'create-note-button' %>
+            <div class="col-sm-8">
+                <%= form_for @note, url: { action: 'create' },
+                :html => { :multipart => true, class: 'form-group' }, remote: true do |f| %>
+                <%= f.text_area :desc, class: 'form-control create', rows: '3', placeholder: "I'm grateful for...", maxlength: '250'%><br />
+  <!--               <input type="file" name="image[pic]" id="image-select" class="hidden" onchange="handleFiles(this.files)" accept="image/*"/>
+                <div id="image-btn" class="btn btn-primary"> Choose image </div>
+                <div class="image-preview-holder"></div> -->
+                <%= hidden_field_tag 'image_id_for_note', '' %>
+                <%= f.submit "Create new note", class: 'btn col-xs-10 col-xs-offset-1 cta', id: 'create-note-button' %>
+                <% end %>
+            </div>
+            <div class="col-sm-4">
+              <%= form_for(Image.new, html: { multipart: true, id: 'image_upload', class: "dropzone"}) do |f|  %>
+              <div class="fallback">
+                <%= f.file_field :image %><br>
+                <%= f.submit "Upload" %>
+              </div>
               <% end %>
+            </div>
               <div class="num-chars">250</div>
             </div>
           </div>

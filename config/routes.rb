@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     member do
       patch 'like', to: 'notes#like'
       patch 'unlike', to: 'notes#unlike'
+      get 'masonry', to: 'notes#masonry'
     end
   end
   
