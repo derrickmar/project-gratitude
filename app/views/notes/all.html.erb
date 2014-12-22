@@ -1,19 +1,17 @@
-<div class="masonry">
-    <div class="row notes-holder">
-        <!-- <div class="grid-sizer"></div> -->
-    	<% @notes.each do |n| %>
-            <%= link_to(n, class: "note-holder", remote: true) do %>
-                <% if !n.images.empty? %>
-                    <div class="note-image">
-                        <% n.images.each do |image| %>
-            				<%= image_tag image.pic.url(:medium) %>
-            			<% end %>
-                    </div>
-                <% end %>
-                <div class='note'>
-                    <%= n.desc %>
+<div class="notes-holder">
+    <!-- <div class="grid-sizer"></div> -->
+	<% @notes.each do |n| %>
+        <%= link_to(n, class: "note-holder", remote: true) do %>
+            <% if !n.images.empty? %>
+                <div class="note-image">
+                    <% n.images.each do |image| %>
+        				<%= image_tag image.pic.url(:medium) %>
+        			<% end %>
                 </div>
             <% end %>
-      <% end %>
-    </div>
+            <div class='note'>
+                <%= n.desc %>
+            </div>
+        <% end %>
+  <% end %>
 </div>

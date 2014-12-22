@@ -31,62 +31,59 @@ $(document).ready(function() {
             });
         }
     });
-
-
-
-    // $('.note-holder').each(function(index) {
-    //     var randRotation = Math.floor((Math.random() * 10) + 1);
-    //     // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-    //     randRotation *= index % 2 == 0 ? 1 : -1;
-    //     $(this).css("transform", "rotate(" + randRotation + "deg)")
-    // })
 });
 
 $(window).load(function() {
-    var $container = $('.masonry');
-    $container.masonry({
-        "itemSelector": '.note-holder',
-        "columnWidth": 130,
-        // columnWidth: function(containerWidth) {
-        //     return containerWidth / 7;
-        // },
-        "gutter": 10
+    var $container = $('.notes-holder').imagesLoaded(function() {
+        $container.isotope({
+            itemSelector: '.note-holder',
+            transformsEnabled: false,
+            masonry: {
+                columnWidth: 50,
+                gutter: 10
+            }
+        })
     });
 
-    $container.imagesLoaded(function() {
-        $container.masonry();
-    });
+    $('.note-holder').each(function(index) {
+        console.log("BEING CALLED?");
+        var randRotation = Math.floor((Math.random() * 5) + 1);
+        // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+        randRotation *= index % 2 == 0 ? 1 : -1;
+        $(this).css("transform", "rotate(" + randRotation + "deg)")
+    })
+
 })
 
-function handleFiles(files) {
-    console.log('calling handle files');
-    for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        var imageType = /image.*/;
+// function handleFiles(files) {
+//     console.log('calling handle files');
+//     for (var i = 0; i < files.length; i++) {
+//         var file = files[i];
+//         var imageType = /image.*/;
 
-        if (!file.type.match(imageType)) {
-            continue;
-        }
+//         if (!file.type.match(imageType)) {
+//             continue;
+//         }
 
-        // var img = document.createElement("img");
-        var img = $('<img>');
-        img.addClass("image-preview");
-        // img.file = file;
+//         // var img = document.createElement("img");
+//         var img = $('<img>');
+//         img.addClass("image-preview");
+//         // img.file = file;
 
-        preview = $('.image-preview-holder')
-        preview.append(img);
-        var reader = new FileReader();
-        reader.onload = (function(aImg) {
-            return function(e) {
-                console.log(aImg);
-                // aImg.src = e.target.result;
-                $(aImg).attr("src", e.target.result)
-                    // Add jquery attr
-            };
-        })(img);
-        reader.readAsDataURL(file);
-    }
-}
+//         preview = $('.image-preview-holder')
+//         preview.append(img);
+//         var reader = new FileReader();
+//         reader.onload = (function(aImg) {
+//             return function(e) {
+//                 console.log(aImg);
+//                 // aImg.src = e.target.result;
+//                 $(aImg).attr("src", e.target.result)
+//                     // Add jquery attr
+//             };
+//         })(img);
+//         reader.readAsDataURL(file);
+//     }
+// }
 
 // var masonry = {
 //     init: function() {
@@ -133,12 +130,11 @@ var modals = {
         $('#home-modal').modal('show');
         // }
         $('.make-note').on('click', function(e) {
-            console.log('activting??');
             $('#home-modal').modal('hide');
             $('#create-modal').modal('show');
         });
         $('#create-note-button').on('click', function() {
-            console.log('Clicked note button');
+            console.log('Clicked create note');
             $('#create-modal').hide();
             $('#share-modal').modal('show');
         });

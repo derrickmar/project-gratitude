@@ -12,7 +12,6 @@ class NotesController < ApplicationController
 	end
 
 	def create
-		puts params[:image_id_for_note]
 		params[:note] = params[:note].merge(user_id: current_or_guest_user.id)
 		@note = Note.new(note_params)
 		respond_to do |format|
