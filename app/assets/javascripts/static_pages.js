@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // modals.init();
+    modals.init();
 
     var fileSelect = $('#image-select'),
         fileElem = $('#image-btn');
