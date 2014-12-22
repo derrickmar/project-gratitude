@@ -1,2 +1,7 @@
 console.log('should be reloading masonry why does it stop scrolling?');
-$('.notes-holder').prepend("<%= escape_javascript render('add_note') %>");
+// var elems = [];
+var content = "<%= escape_javascript render('add_note') %>";
+// elems.push(content);
+$('.notes-holder').isotope('insert', $(content));
+// NOT sure why scroll messes up on ajax but seems to fix it
+$('body').css("overflow-y", "scroll");

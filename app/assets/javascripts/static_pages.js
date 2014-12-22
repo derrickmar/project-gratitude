@@ -16,7 +16,7 @@ $(document).ready(function() {
     $("#image_upload").dropzone({
         maxFiles: 1,
         // restrict image size to a maximum 1MB
-        maxFilesize: 4,
+        maxFilesize: 10,
         acceptedFiles: "image/*",
         // changed the passed param to one accepted by
         // our rails app

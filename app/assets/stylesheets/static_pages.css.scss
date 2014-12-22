@@ -12,19 +12,6 @@
 //}
 
 
-.item {
-  float: left;
-  width: 100px;
-  height: 100px;
-  margin-bottom: 20px;
-  background: #0D8;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.7);
-}
-
-/* 2 cols + 1 gutter = 100 + 20 + 100 */
-.item.width2 { width: 220px; }
-.item.height2 { height: 220px; }
 
 @mixin transition {
     -webkit-transition: all 0.3s ease-in-out;
@@ -38,6 +25,7 @@
 body {
     background-image: image-url("square.jpg");
     background-size: 250px 250px;
+    overflow-y: scroll;
 //    background-size: cover;
 //    background-repeat: repeat-y;
 //    background-repeat: repeat-x;
