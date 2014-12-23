@@ -28,13 +28,14 @@ gem 'spring',        group: :development
 gem 'bower-rails'
 gem 'devise'
 gem 'hirb'
+gem 'bootstrap-sass', '~> 3.3.1'
 
 gem 'omniauth-facebook'
 gem "figaro"
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
 gem 'masonry-rails'
-
+gem 'shareable'
 
 group :test, :development do
 	gem "better_errors"

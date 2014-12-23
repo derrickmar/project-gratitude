@@ -1,21 +1,27 @@
 <div class="notes-holder">
     <!-- <div class="grid-sizer"></div> -->
-	<% @notes.each do |n| %>
-        <%= link_to(n, class: "note-holder", remote: true) do %>
-            <% if !n.images.empty? %>
-                <div class="note-image">
-                    <% n.images.each do |image| %>
-        				<%= image_tag image.pic.url(:medium) %>
-        			<% end %>
-                </div>
+    <% @notes.each do |n| %>
+    <div class="note-holder">
+        <%= link_to(n, remote: true) do %>
+        <% if !n.images.empty? %>
+        <div class="note-image">
+            <% n.images.each do |image| %>
+            <%= image_tag image.pic.url(:medium) %>
             <% end %>
-            <div class='note'>
-                <%= n.desc %>
-            </div>
-            <!-- <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>  -->
+        </div>
         <% end %>
-  <% end %>
+        <div class='note'>
+            <%= n.desc %>
+            <%= note_path(n) %>
+        </div>
+        <% end %>
+        <div class="note-buttons">
+            <div class="fb-share-button" data-href=<%= note_path(n) %> data-layout="button_count"></div>
+        </div>
+    </div>
+    <% end %>
 </div>
 <%= render 'modals/home' %>
 <%= render 'modals/create' %>
 <%= render 'modals/show_note' %>
+

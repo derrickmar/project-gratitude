@@ -21,14 +21,14 @@ module Gratitude
     # config.i18n.default_locale = :de
 
     # Add Bower asset paths to the asset pipeline
-    root.join('vendor', 'assets', 'bower_components').to_s.tap do |bower_path|
-      config.sass.load_paths << bower_path
-      config.assets.paths << bower_path
-    end
-    # Precompile Bootstrap fonts
-    config.assets.precompile << %r(bootstrap-sass-official/assets/fonts/bootstrap/[\w-]+\.(?:eot|svg|ttf|woff)$)
-    # Minimum Sass number precision required by bootstrap-sass
-    ::Sass::Script::Number.precision = [10, ::Sass::Script::Number.precision].max
+    # root.join('vendor', 'assets', 'bower_components').to_s.tap do |bower_path|
+    #   config.sass.load_paths << bower_path
+    #   config.assets.paths << bower_path
+    # end
+    # # Precompile Bootstrap fonts
+    # config.assets.precompile << %r(bootstrap-sass-official/assets/fonts/bootstrap/[\w-]+\.(?:eot|svg|ttf|woff)$)
+    # # Minimum Sass number precision required by bootstrap-sass
+    # ::Sass::Script::Number.precision = [10, ::Sass::Script::Number.precision].max
 
   end
 end
