@@ -2,7 +2,7 @@
     <!-- <div class="grid-sizer"></div> -->
     <% @notes.each do |n| %>
     <div class="note-holder">
-        <%= link_to(n, remote: true) do %>
+        <%= link_to(n) do %>
         <% if !n.images.empty? %>
         <div class="note-image">
             <% n.images.each do |image| %>

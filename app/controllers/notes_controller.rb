@@ -38,7 +38,6 @@ class NotesController < ApplicationController
 		end
 		# TODO: PREVENT PALOMA _hook.html.erb FROM RENDERING ON AJAX CALL
 		# this is a quick fix by disabling paloma. Might want to do something better later
-		js false
 	end
 
 	def like
