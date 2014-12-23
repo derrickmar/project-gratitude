@@ -1,3 +1,4 @@
+console.log('should be runnning show.js.erb');
 var container = $('#show-note-modal').find('.modal-body');
 container.empty();
 container.html("<%= escape_javascript render('note') %>");

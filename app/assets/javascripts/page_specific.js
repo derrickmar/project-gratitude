@@ -1,4 +1,10 @@
-// var NotesController = Paloma.controller('Notes');
+var NotesController = Paloma.controller('Notes');
+
+NotesController.prototype.all = function() {
+ (function($, window, document) {
+     console.log('Yeah this is working');
+    }(window.jQuery, window, document));
+};
 
 // NotesController.prototype.all = function() {
 // 	(function($, window, document) {
