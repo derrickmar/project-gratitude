@@ -36,6 +36,7 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
 gem 'masonry-rails'
 gem 'shareable'
+gem 'paloma' 
 
 group :test, :development do
 	gem "better_errors"

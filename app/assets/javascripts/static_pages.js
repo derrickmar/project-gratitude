@@ -24,10 +24,18 @@ $(document).ready(function() {
         // show remove links on each image upload
         addRemoveLinks: true,
         init: function() {
+            this.on("sending", function(file, response) {
+                $("#create-note-button").prop("disabled", true);
+                $("#create-note-button").attr('value', "Loading Image...")
+            });
             this.on("success", function(file, response) {
                 console.log(response);
                 $('#image_id_for_note').val(response.image_id);
                 // TODO: Remember in note controller to clear this value of successful submission
+            });
+            this.on("complete", function(file, response) {
+                $("#create-note-button").attr('value', "Spread the gratitude")
+                 $("#create-note-button").prop("disabled", false);
             });
         }
     });

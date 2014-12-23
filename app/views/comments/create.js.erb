@@ -1,3 +1,7 @@
 console.log('adding comment');
-var content = '<%= @comment.desc %>'
-$('.comments-box').append(content)
+var note_id = <%= @comment.note_id %>
+var content = "<ul>\
+      <li class='comment'> <%= @comment.desc %> - <%= @comment.user.name %> </li>\
+    </ul>"
+$('.show_note[data-noteid="' + note_id + '"]').find('.comments-box').prepend(content);
+$('.comment-text').val('');

@@ -15,6 +15,6 @@
 class Image < ActiveRecord::Base
 	belongs_to :note
 
-	has_attached_file :pic, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/question-mark.svg"
+	has_attached_file :pic, :styles => { :medium => "400x400>", :thumb => "100x100>" }, :default_url => "/images/:style/question-mark.svg"
 	validates_attachment_content_type :pic, :content_type => /\Aimage\/.*\Z/
 end

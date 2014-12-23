@@ -11,6 +11,10 @@
 //  background-size: cover;
 //}
 
+//=============_note.html.erb
+.single-note-image {
+    width: 100%;
+}
 
 
 @mixin transition {
@@ -124,16 +128,6 @@ body {
 }
 
 
-.modal-header {
-    h1 {
-        font-weight: 5;
-    }
-    h3 {
-        margin-top: -6px;
-        color: grey;
-    }
-}
-
 .modal-body {
     .line {
         width: 3px;
@@ -168,14 +162,6 @@ body {
     }
     .main-modal {
     }
-}
-
-.masonry {
-    min-height: 900px;
-    width: 100%;
-    margin-top: 20%;
-    @media(min-width: 480px) {margin-top: 10%;}
-    height: 100%;
 }
 
 
@@ -249,10 +235,10 @@ footer {
     margin-top: 5px;
     font-size: 22px;
     @media(min-width: 480px) {
-        font-size: 25px;
+        font-size: 18px;
     }
     @media(min-width: 600px) {
-        font-size: 30px;
+        font-size: 24px;
     }
 }
 .comment-button {
@@ -271,11 +257,55 @@ footer {
         color: #34495e !important;
     }
 }
-.comment-form {
-    width: 50% !important;
+
+.comments-box {
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    .comment {
+        font-size: 18px;
+        margin-top: 5px;
+        border-bottom: 1px solid black;
+        word-wrap: break-word;
+    }
 }
-.comment {
-    font-size: 18px;
-    margin-top: 5px;
-    border-bottom: 1px solid black;
+
+
+
+//==== TRANSIITONS
+.blink_me {
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
 }

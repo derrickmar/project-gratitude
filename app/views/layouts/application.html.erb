@@ -6,28 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+  <meta property="og:title" content="Project Gratitude"/>
+  <meta property="og:site_name" content="Project Gratitude"/>
+  <meta property="og:url" content="<%= request.original_url %>" />
+  <meta property="og:description" content="Because life is a f*cking miracle" />
+  <meta property="fb:app_id" content="1503557093265232" />
+
 </head>
 <body>
   <div id="fb-root"></div>
-  <script>
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1503557093265232',
-      xfbml      : true,
-      version    : 'v2.2'
-    });
-  };
-
-  (function(d, s, id){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk'));
-  </script>
-
   <%= render 'shared/header' %>
 
 <div class="container">
