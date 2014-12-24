@@ -12,6 +12,7 @@ class NotesController < ApplicationController
 	end
 
 	def create
+		puts "IN NOTE#CREATE"
 		params[:note] = params[:note].merge(user_id: current_or_guest_user.id)
 		@note = Note.new(note_params)
 		respond_to do |format|
@@ -28,6 +29,7 @@ class NotesController < ApplicationController
 				format.js { render :template => 'notes/error.js.erb' }
 			end
 		end
+		js false
 	end
 
 	def show

@@ -1,12 +1,22 @@
-<%= link_to(@note, class: "col-md-3 col-sm-4 col-xs-12 note-holder", remote: true) do %>
-	<% if !@note.images.empty? %>
-    <div class="note-image">
-			<% @note.images.each do |image| %>
+<%= link_to(@note, remote: true) do %>
+	<div class="note-holder"  id="<%= 'note' + @note.id.to_s %>">
+		<% if !@note.images.empty? %>
+			<div class="note-image">
+				<% @note.images.each do |image| %>
 				<%= image_tag image.pic.url(:medium) %>
-			<% end %>
+				<% end %>
+			</div>
+		<% end %>
+
+			<div class="note">
+				<%= @note.desc %>
+			</div>
+			<div class="note-buttons">
+			      <div class="fb-share-button facebook" data-href="<%= request.original_url + note_path(@note) %>" data-image="<%= @note.images.first.pic.url(:original) if !@note.images.empty? %>"  data-layout="button_count"></div>
+			      <a href="https://twitter.com/share" class="twitter-share-button twitter"
+			      data-url="<%= request.original_url.chomp("/") + note_path(@note) %>"
+			      data-text="<%= @note.desc %>"
+			      data-hashtags="Gratitude">Tweet</a>
+			</div>
 		</div>
-	<% end %>
-	<div class="note">
-		<%= @note.desc %>
-	</div>
 <% end %>

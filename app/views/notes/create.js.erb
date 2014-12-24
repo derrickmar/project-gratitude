@@ -1,8 +1,11 @@
 console.log('should be reloading masonry why does it stop scrolling?');
-// var elems = [];
 var content = "<%= escape_javascript render('add_note') %>";
+var id = 'note' + <%= @note.id %>;
 // elems.push(content);
 $('.notes-holder').isotope('insert', $(content));
 // NOT sure why scroll messes up on ajax but seems to fix it
 $('body').css("overflow-y", "scroll");
+FB.XFBML.parse(document.getElementById(id));
+twttr.widgets.load(document.getElementById(id));
+$('#note_desc').val('')
 // TODO add some transform slantedness

@@ -1,28 +1,28 @@
 <div class="notes-holder">
     <!-- <div class="grid-sizer"></div> -->
     <% @notes.each do |n| %>
-    <div class="note-holder">
-        <%= link_to n, remote: true do %>
-        <% if !n.images.empty? %>
-        <div class="note-image">
-            <% n.images.each do |image| %>
-            <%= image_tag image.pic.url(:medium) %>
+    <%= link_to n, remote: true do %>
+        <div class="note-holder"  id="<%= 'note' + n.id.to_s %>">
+            <% if !n.images.empty? %>
+                <div class="note-image">
+                    <% n.images.each do |image| %>
+                        <%= image_tag image.pic.url(:medium) %>
+                    <% end %>
+                </div>
             <% end %>
+            <div class='note'>
+                <%= n.desc %>
+            </div>
+            <div class="note-buttons">
+                <div class="fb-share-button facebook" data-href="<%= request.original_url + note_path(n) %>" data-image="<%= n.images.first.pic.url(:original) if !n.images.empty? %>"  data-layout="button_count"></div>
+                <a href="https://twitter.com/share" class="twitter-share-button twitter"
+                data-url="<%= request.original_url.chomp("/") + note_path(n) %>"
+                data-text="<%= n.desc %>"
+                data-hashtags="Gratitude">Tweet</a>
+            <!-- TODO shorten for tweet!!  -->
+            </div>
         </div>
         <% end %>
-        <div class='note'>
-            <%= n.desc %>
-        </div>
-        <% end %>
-        <div class="note-buttons">
-            <div class="fb-share-button facebook" data-href="<%= request.original_url + note_path(n) %>" data-image="<%= n.images.first.pic.url(:original) if !n.images.empty? %>"  data-layout="button_count"></div>
-            <a href="https://twitter.com/share" class="twitter-share-button twitter"
-            data-url="<%= request.original_url.chomp("/") + note_path(n) %>"
-            data-text="<%= n.desc %>"
-            data-hashtags="Gratitude">Tweet</a>
-        <!-- TODO shorten for tweet!!  -->
-        </div>
-    </div>
     <% end %>
 </div>
 <%= render 'modals/home' %>

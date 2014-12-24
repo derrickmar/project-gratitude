@@ -44,6 +44,9 @@ NotesController.prototype.all = function() {
                 this.startModalShow();
                 modals.ranOnce = true;
                 $('#create-new-note').on('click', function() {
+                    console.log("it doesn't show it multiple times?");
+                    // TODO for some reason create modal doesn't show after creating a note
+                    // Need to hide and show it?
                     $('#create-modal').modal('show');
                 })
             },
@@ -69,8 +72,7 @@ NotesController.prototype.all = function() {
                 });
                 $('#create-note-button').on('click', function() {
                     console.log('Clicked create note');
-                    $('#create-modal').hide();
-                    $('#share-modal').modal('show');
+                    $('#create-modal').modal('hide');
                 });
             },
             ranOnce: false
