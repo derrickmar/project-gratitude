@@ -1,6 +1,6 @@
-$(document).on('page:restore', function(){
-  // Manually evaluates the appended script tag.
-  Paloma.executeHook();
+$(document).on('page:load', function(){
+   Paloma.executeHook();
+   Paloma.engine.start();
 });
 
 $(document).ready(function() {

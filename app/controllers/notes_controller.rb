@@ -36,8 +36,9 @@ class NotesController < ApplicationController
 			format.html { @note } # support a non-ajax call
 			format.js
 		end
-		# TODO: PREVENT PALOMA _hook.html.erb FROM RENDERING ON AJAX CALL
+		# TODO: PREVENT PALOMA _hook.html.erb FROM RENDERING ON AJAX CALL (for some reason modal doesn't show up when paloma is enabled)
 		# this is a quick fix by disabling paloma. Might want to do something better later
+		js false
 	end
 
 	def like

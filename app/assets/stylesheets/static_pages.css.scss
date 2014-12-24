@@ -11,6 +11,9 @@
 //  background-size: cover;
 //}
 
+$secondary:  #2c3e50;
+$primary-font: 'Special Elite', cursive;
+
 //=============_note.html.erb
 .single-note-image {
     width: 100%;
@@ -30,6 +33,7 @@ body {
     background-image: image-url("square.jpg");
     background-size: 250px 250px;
     overflow-y: scroll;
+    font-family: $primary-font;
 //    background-size: cover;
 //    background-repeat: repeat-y;
 //    background-repeat: repeat-x;
@@ -45,20 +49,27 @@ body {
 }
 
 
-//.navbar-brand, .navbar-toggle,
-//.navbar-nav li a.widen {
-//    line-height: 80px;
-//    height: 80px;
-//    padding-top: 0;
-//}
+//==== HEADER STYLES
+.header-container {
+    height: 100px;
+    font-family: $primary-font;
+    
+    #create-new-note {
+        background-color: #2c3e50;
+        color: white !important;
+        transform: rotate(2deg);
 
-//.navbar-toggle {
-//    height: 40px;
-//    margin-top: 20px;
-//    margin-bottom: 20px;
-//    padding: 0 5px !important;
-//    z-index: 1;
-//}
+        &:hover {
+            cursor: pointer;
+            background-color: white;
+            color: black !important;
+        }
+        .glyphicon {
+            margin-right: 4px;
+        }
+
+    }
+}
 
 .navbar-brand {
     position: absolute;
@@ -68,29 +79,70 @@ body {
     text-align: center;
     margin: auto;
     .content {
+        transform: rotate(-1deg);
         position: relative;
         display: inline-block;
         a {
             color: black;
-            font-family: 'Special Elite', cursive;
-            font-size: 24px;
+            font-family: $primary-font;
             padding: 10px 15px 5px 15px;
             background-color: white;
-            line-height: 100px;
             text-decoration: none;
+            display: block;
         }
         .pin {
             position: absolute;
             left: -17px;
-            top: -20px;
+            top: -30px;
             width: 60px;
             height: auto;
         }
+        .root-image {
+            h1 {
+                font-size: 24px;
+                margin: 0 0 5px 0;
+            }
+
+            h2 {
+                font-size: 18px;
+                margin: 0;
+            }
+            span {
+                margin: 0;
+                padding: 0;
+                color: red;
+            }
+        }
+    }
+
+}
+
+//========== AUTHENTICATION STYLES
+.authentication-holder {
+    margin-top: 40px;
+    .authentication-box {
+        font-family: $primary-font;
+        background-color: white;
+        padding: 10px 30px;
+    }
+
+    .btn-primary {
+        background-color: $secondary;
     }
 }
 
+.facebook-login {
+    width: 160px;
+}
 
-/*flash*/
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+}
+
+//========== FLASH STYLES
 .alert-error {
     background-color: #f2dede;
     border-color: #eed3d7;
@@ -120,7 +172,7 @@ body {
 }
 
 .modal-content {
-    font-family: 'Special Elite', cursive;
+    font-family: $primary-font;
     background: rgba(255, 255, 255, 0.9) !important;
     color: black;
     margin-left: auto;
@@ -146,11 +198,11 @@ body {
         margin-top: 4%;
         height: 60px;
         font-size: 25px;
-        background-color: #2980b9;
+        background-color: $secondary;
         color: white;
         transition: .5s;
         &:hover {
-            color: #2980b9;
+            color: $secondary;
             background-color: white;
         }
     }
@@ -166,7 +218,7 @@ body {
 
 
 .notes-holder {
-    margin-top: 80px;
+    margin-top: 30px;
 
     .note-holder {
         max-width: 320px;
