@@ -3,14 +3,6 @@
 // $header = #f1f1f1
 // $dark-grey = #999999
 
-//html {
-//  background: image-url("pinboard.jpeg") repeat-y center center fixed;
-//  -webkit-background-size: cover;
-//  -moz-background-size: cover;
-//  -o-background-size: cover;
-//  background-size: cover;
-//}
-
 $secondary:  #2c3e50;
 $primary-font: 'Special Elite', cursive;
 
@@ -197,8 +189,10 @@ body {
     font-family: $primary-font;
     background: rgba(255, 255, 255, 0.9) !important;
     color: black;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.modal-header {
+    margin: 20px;
 }
 
 
@@ -241,11 +235,13 @@ body {
 
 .notes-holder {
     margin-top: 30px;
-
+    @media(min-width: 600px) {
+        margin-left: 40px;
+    }
     .note-holder {
         max-width: 320px;
         background-color: white;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         word-wrap: break-word;
         text-decoration: none;
         color: black;
@@ -317,6 +313,8 @@ footer {
 .note-desc {
     margin-top: 5px;
     font-size: 22px;
+    word-wrap: break-word;
+
     @media(min-width: 480px) {
         font-size: 18px;
     }
