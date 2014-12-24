@@ -44,8 +44,7 @@ NotesController.prototype.all = function() {
                 this.startModalShow();
                 modals.ranOnce = true;
                 $('#create-new-note').on('click', function() {
-                    console.log('should be clicking!!');
-                    $('#home-modal').modal('show');
+                    $('#create-modal').modal('show');
                 })
             },
             bindListeners: function() {
@@ -60,10 +59,10 @@ NotesController.prototype.all = function() {
                 $('.num-chars').text(total);
             },
             startModalShow: function() {
-                // if (window.location.pathname == '/' && localStorage.visited !== 'true') {
-                // localStorage.visited = true;
-                $('#home-modal').modal('show');
-                // }
+                if (window.location.pathname == '/' && localStorage.visited !== 'true') {
+                    localStorage.visited = true;
+                    $('#home-modal').modal('show');
+                }
                 $('.make-note').on('click', function(e) {
                     $('#home-modal').modal('hide');
                     $('#create-modal').modal('show');
