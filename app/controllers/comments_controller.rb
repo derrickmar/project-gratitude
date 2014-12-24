@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 				format.js { render :template => 'error.js.erb' }
 			end
 		end
+		js false
 	end
 
 	private
