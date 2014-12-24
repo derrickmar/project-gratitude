@@ -21,7 +21,7 @@
       <!-- if guest don't show sign out -->
       <li><a id="create-new-note"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Spread Gratitude</a> </li>
       <% if user_signed_in? && !current_or_guest_user.is_guest %>
-      <li><%= link_to destroy_user_session_path, method: :delete  %></li>
+      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete , class: "sign_out" %></li>
       <% else %>
       <li>
         <%= link_to new_user_session_path, class: "settings" do %>
