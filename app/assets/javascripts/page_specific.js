@@ -62,10 +62,10 @@ NotesController.prototype.all = function() {
                 $('.num-chars').text(total);
             },
             startModalShow: function() {
-                // if (window.location.pathname == '/' && localStorage.visited !== 'true') {
-                //     localStorage.visited = true;
+                if (window.location.pathname == '/' && localStorage.visited !== 'true') {
+                    localStorage.visited = true;
                 $('#home-modal').modal('show');
-                // }
+                }
                 $('.make-note').on('click', function(e) {
                     $('#home-modal').modal('hide');
                     $('#create-modal').modal('show');
