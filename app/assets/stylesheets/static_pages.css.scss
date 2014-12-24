@@ -60,14 +60,26 @@ body {
         transform: rotate(2deg);
 
         &:hover {
-            cursor: pointer;
             background-color: white;
             color: black !important;
         }
         .glyphicon {
             margin-right: 4px;
         }
+    }
 
+    .settings {
+        width: 50px;
+        height: 50px;
+        color: white;
+        background-color: #2c3e50;
+        font-size: 1.4em;
+        margin-left: 15px;
+        transform: rotate(-4deg);
+        &:hover {
+            background-color: white;
+            color: black !important;
+        }
     }
 }
 
@@ -120,10 +132,20 @@ body {
 //========== AUTHENTICATION STYLES
 .authentication-holder {
     margin-top: 40px;
+
+    .label-small {
+        font-size: 11px;
+    }
+
     .authentication-box {
         font-family: $primary-font;
         background-color: white;
-        padding: 10px 30px;
+        padding: 15px 30px;
+
+        h2 {
+            margin-top: 5px;
+            font-size: 21px;
+        }
     }
 
     .btn-primary {
@@ -248,7 +270,16 @@ body {
         }
 
         .note-buttons {
-            padding: 10px 20px 10px 20px;
+            padding: 10px 20px 5px 20px;
+
+            .twitter {
+                padding: 0 5px;
+            }
+
+            .facebook {
+                position: relative;
+                top: -7px;
+            }
             
             .glyphicon {
                 font-size: 1.4em;

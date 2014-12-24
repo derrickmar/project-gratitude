@@ -15,8 +15,8 @@
         </div>
         <% end %>
         <div class="note-buttons">
-            <div class="fb-share-button" data-href="<%= request.original_url + note_path(n) %>" data-image="<%= n.images.first.pic.url(:original) if !n.images.empty? %>"  data-layout="button_count"></div>
-            <a href="https://twitter.com/share" class="twitter-share-button"
+            <div class="fb-share-button facebook" data-href="<%= request.original_url + note_path(n) %>" data-image="<%= n.images.first.pic.url(:original) if !n.images.empty? %>"  data-layout="button_count"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button twitter"
             data-url="<%= request.original_url.chomp("/") + note_path(n) %>"
             data-text="<%= n.desc %>"
             data-hashtags="Gratitude">Tweet</a>

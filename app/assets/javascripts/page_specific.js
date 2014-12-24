@@ -6,11 +6,14 @@ NotesController.prototype.all = function() {
 
         var isotopy = {
             onReady: function() {
-                this.runIsotope();
+                WebFont.load({
+                    active: isotopy.triggerIsotope(),
+                    inactive: isotopy.triggerIsotope()
+                });
                 this.randomRotate();
                 this.ranOnce = true;
             },
-            runIsotope: function() {
+            triggerIsotope: function() {
                 var $container = $('.notes-holder').imagesLoaded(function() {
                     $container.isotope({
                         itemSelector: '.note-holder',
