@@ -27,8 +27,13 @@ NotesController.prototype.all = function() {
                     nextSelector: ".page > a[rel='next']",
                     // selector for the NEXT link (to page 2)
                     itemSelector: ".note-holder-link",
-                    // debug: true
-
+                    // debug: true,
+                    loading: {
+                        img: "http://i.imgur.com/qkKy8.gif",
+                        msgText: "Loading new Graddys...",
+                        finishedMsg: "That's all the Graddys we have for now. Add more! :)",
+                        speed: "fast"
+                    }
                 }, function(arrayOfNewElems) {
                     // console.log("newElems", arrayOfNewElems);
                     var $newElems = $(arrayOfNewElems);
@@ -37,34 +42,18 @@ NotesController.prototype.all = function() {
                         isotopy.container.isotope('appended', $newElems);
                     });
 
-                    // TODO: This is a quick fix to the more appropriate callback!
-                    // $("#container").isotope( 'on', 'layoutComplete', function( isoInstance, laidOutItems ) {} );
-                    // See: https://github.com/metafizzy/isotope/issues/732
-                    // For some reason this callback is toguh 
-                    // Being called so mnay times
-                    // $(".notes-holder").delegate(".note-holder", "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
-                    //     console.log($(this));
-                    //     console.log("BEING CALLED!!!!!!");
-                    //     // $(this).toggleClass("chosen");
-                    // });
                 });
             },
             triggerIsotope: function() {
                 isotopy.container = $('.notes-holder').imagesLoaded(function() {
                     isotopy.container.isotope({
-                            itemSelector: '.note-holder',
-                            transformsEnabled: false,
-                            masonry: {
-                                columnWidth: 50,
-                                gutter: 10
-                            }
-                        })
-                        // Callback is not quite working as expected (calls randomly when appended method is called)
-                        // Doesn't do randomRotate on the last scroll call
-                        // isotopy.container.isotope('on', 'layoutComplete', function() {
-                        //     console.log('yay!!!');
-                        //     isotopy.randomRotate($('.note-holder'));
-                        // });
+                        itemSelector: '.note-holder',
+                        transformsEnabled: false,
+                        masonry: {
+                            columnWidth: 50,
+                            gutter: 10
+                        }
+                    })
                 });
             },
             randomRotate: function(el) {

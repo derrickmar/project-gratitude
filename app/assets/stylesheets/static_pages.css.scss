@@ -45,6 +45,25 @@ body {
     display: inline-block;
 }
 
+//======= INFINITE SCROLLING STYLES
+#infscr-loading {
+    text-align: center;
+    position: fixed;
+    bottom: 30px;
+    left: 39%;
+    z-index: 100;
+    width: 300px;
+    background: white;
+    background: hsla( 0, 0%, 100%, 0.9 );
+    padding: 20px;
+    color: #222;
+    font-size: 15px;
+    font-weight: bold;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
 
 //==== HEADER STYLES
 .header-container {
@@ -284,6 +303,7 @@ body {
         text-decoration: none;
         color: black;
         padding-top: 10px;
+        z-index: -1;
 
         .note-image {
             border: 10px solid white;
