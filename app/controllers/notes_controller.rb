@@ -4,7 +4,7 @@ class NotesController < ApplicationController
 
 	def all
 		@note = Note.new
-		@notes = Note.all
+		@notes = Note.all.page(params[:page])
 	end
 
 	def new

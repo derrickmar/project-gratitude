@@ -4,6 +4,25 @@ NotesController.prototype.all = function() {
     (function($, window, document) {
         console.log('Executing page specific javascript notes#all');
 
+    // $(document).ready(function(){
+    //     $('#content').infinitescroll({
+    //         navSelector: "#next:last",
+    //         nextSelector: "#next:last",
+    //         itemSelector: "#content",
+    //         debug: false,
+    //         dataType: 'html',
+    //     maxPage: 6,
+    //         path: function(index) {
+    //             return "index" + index + ".html";
+    //         }
+    //         // appendCallback   : false, // USE FOR PREPENDING
+    //     }, function(newElements, data, url){
+    //       // used for prepending data
+    //         // $(newElements).css('background-color','#ffef00');
+    //         // $(this).prepend(newElements);
+    //     });
+    // });
+
         var isotopy = {
             onReady: function() {
                 WebFont.load({
@@ -11,7 +30,15 @@ NotesController.prototype.all = function() {
                     inactive: isotopy.triggerIsotope()
                 });
                 this.randomRotate();
-                this.ranOnce = true;
+                $('.notes-holder').infinitescroll({
+
+                    navSelector: ".note-pagination-links",
+                    // selector for the paged navigation (it will be hidden)
+                    nextSelector: ".page > a[rel='next']",
+                    // selector for the NEXT link (to page 2)
+                    itemSelector: ".note-holder"
+                        // selector for all items you'll retrieve
+                });
             },
             triggerIsotope: function() {
                 var $container = $('.notes-holder').imagesLoaded(function() {
@@ -32,17 +59,14 @@ NotesController.prototype.all = function() {
                     randRotation *= index % 2 == 0 ? 1 : -1;
                     $(this).css("transform", "rotate(" + randRotation + "deg)")
                 })
-            },
-            ranOnce: false
+            }
         }
 
         var modals = {
             init: function() {
                 console.log('running modals init right?');
-                // console.log(this.ranOnce);
                 this.bindListeners();
                 this.startModalShow();
-                modals.ranOnce = true;
                 $('#create-new-note').on('click', function() {
                     console.log("it doesn't show it multiple times?");
                     // TODO for some reason create modal doesn't show after creating a note
@@ -64,9 +88,10 @@ NotesController.prototype.all = function() {
             startModalShow: function() {
                 if (window.location.pathname == '/' && localStorage.visited !== 'true') {
                     localStorage.visited = true;
-                $('#home-modal').modal('show');
+                    $('#home-modal').modal('show');
                 }
                 $('.make-note').on('click', function(e) {
+                    console.log('running click note');
                     $('#home-modal').modal('hide');
                     $('#create-modal').modal('show');
                 });
@@ -75,12 +100,12 @@ NotesController.prototype.all = function() {
                     $('#create-modal').modal('hide');
                     $('#share-modal').modal('show');
                 });
-            },
-            ranOnce: false
+            }
         }
 
         // $(window).load(function() {
         // console.log('running window load in notes#all');
+        // TODO: Will this run correctly alhtough we can't put it in window.load?
         isotopy.onReady();
         // })
 
@@ -90,10 +115,7 @@ NotesController.prototype.all = function() {
 
         $(document).ready(function() {
             console.log('in document the ready');
-            console.log("modalsranOnce", modals.ranOnce);
-            if (!modals.ranOnce) {
-                modals.init();
-            }
+            modals.init();
         });
 
     }(window.jQuery, window, document));

@@ -10,6 +10,8 @@
 #
 
 class Note < ActiveRecord::Base
+	paginates_per 10
+
 	belongs_to :user
 	has_many :comments
 	has_many :likes

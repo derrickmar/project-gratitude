@@ -37,6 +37,7 @@ gem 'aws-sdk'
 gem 'masonry-rails'
 gem 'shareable'
 gem 'paloma' 
+gem 'kaminari'
 
 group :test, :development do
 	gem "better_errors"
