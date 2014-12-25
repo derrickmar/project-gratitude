@@ -4,45 +4,62 @@ NotesController.prototype.all = function() {
     (function($, window, document) {
         console.log('Executing page specific javascript notes#all');
 
-    // $(document).ready(function(){
-    //     $('#content').infinitescroll({
-    //         navSelector: "#next:last",
-    //         nextSelector: "#next:last",
-    //         itemSelector: "#content",
-    //         debug: false,
-    //         dataType: 'html',
-    //     maxPage: 6,
-    //         path: function(index) {
-    //             return "index" + index + ".html";
-    //         }
-    //         // appendCallback   : false, // USE FOR PREPENDING
-    //     }, function(newElements, data, url){
-    //       // used for prepending data
-    //         // $(newElements).css('background-color','#ffef00');
-    //         // $(this).prepend(newElements);
-    //     });
-    // });
+        // $(document).ready(function(){
+        //     $('#content').infinitescroll({
+        //         navSelector: "#next:last",
+        //         nextSelector: "#next:last",
+        //         itemSelector: "#content",
+        //         debug: false,
+        //         dataType: 'html',
+        //     maxPage: 6,
+        //         path: function(index) {
+        //             return "index" + index + ".html";
+        //         }
+        //         // appendCallback   : false, // USE FOR PREPENDING
+        //     }, function(newElements, data, url){
+        //       // used for prepending data
+        //         // $(newElements).css('background-color','#ffef00');
+        //         // $(this).prepend(newElements);
+        //     });
+        // });
 
         var isotopy = {
+            container: null,
             onReady: function() {
                 WebFont.load({
                     active: isotopy.triggerIsotope(),
                     inactive: isotopy.triggerIsotope()
                 });
-                this.randomRotate();
-                $('.notes-holder').infinitescroll({
+                this.randomRotate($('.note-holder'));
 
+                $('.notes-holder').infinitescroll({
                     navSelector: ".note-pagination-links",
                     // selector for the paged navigation (it will be hidden)
                     nextSelector: ".page > a[rel='next']",
                     // selector for the NEXT link (to page 2)
-                    itemSelector: ".note-holder"
-                        // selector for all items you'll retrieve
+                    itemSelector: ".note-holder",
+                    // debug: true
+
+                }, function(arrayOfNewElems) {
+                    // console.log("newElems", arrayOfNewElems);
+                    var $newElems = $(arrayOfNewElems);
+                    $newElems.imagesLoaded(function() {
+                        isotopy.container.isotope('appended', $newElems);
+                    });
+
+                    // TODO: This is a quick fix to the more appropriate callback!
+                    // $("#container").isotope( 'on', 'layoutComplete', function( isoInstance, laidOutItems ) {} );
+                    // See: https://github.com/metafizzy/isotope/issues/732
+                    // For some reason this callback is toguh 
+                    // Being called so mnay times
+                    $(".notes-holder").bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
+                        isotopy.randomRotate($newElems);
+                    });
                 });
             },
             triggerIsotope: function() {
-                var $container = $('.notes-holder').imagesLoaded(function() {
-                    $container.isotope({
+                isotopy.container = $('.notes-holder').imagesLoaded(function() {
+                    isotopy.container.isotope({
                         itemSelector: '.note-holder',
                         transformsEnabled: false,
                         masonry: {
@@ -50,10 +67,18 @@ NotesController.prototype.all = function() {
                             gutter: 10
                         }
                     })
+                    // Callback is not quite working as expected (calls randomly on append)
+                    // isotopy.container.isotope('on', 'layoutComplete', function() {
+                    //     console.log('yay!!!');
+                    //     isotopy.randomRotate($('.note-holder'));
+                    // });
                 });
             },
-            randomRotate: function() {
-                $('.note-holder').each(function(index) {
+            randomRotate: function(el) {
+                console.log("RUNNING RANDOM ROTATE");
+                // console.log(el);
+                el.each(function(index) {
+                    console.log("again?");
                     var randRotation = Math.floor((Math.random() * 5) + 1);
                     // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
                     randRotation *= index % 2 == 0 ? 1 : -1;

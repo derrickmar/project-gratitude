@@ -1,4 +1,4 @@
-<div class="note-pagination-links">
+<div class="note-pagination-links hidden">
     <%= paginate @notes %>
 </div>
 <div class="notes-holder">
@@ -15,14 +15,6 @@
             <% end %>
             <div class='note'>
                 <%= n.desc %>
-            </div>
-            <div class="note-buttons">
-                <div class="fb-share-button facebook" data-href="<%= request.base_url + note_path(n) %>" data-image="<%= n.images.first.pic.url(:original) if !n.images.empty? %>"  data-layout="button_count"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button twitter"
-                data-url="<%= request.base_url + note_path(n) %>"
-                data-text="<%= n.desc %>"
-                data-hashtags="Gratitude">Tweet</a>
-            <!-- TODO shorten for tweet!!  -->
             </div>
         </div>
         <% end %>
