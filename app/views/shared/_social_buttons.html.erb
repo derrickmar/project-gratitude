@@ -1,0 +1,11 @@
+<div class="fb-like facebook"
+		 data-href="<%= request.base_url + '?id=' + note.id.to_s %>"
+		 data-share="true" data-action="like"
+		 data-image="<%= note.images.first.pic.url(:original) if !note.images.empty? %>"
+		 data-layout="box_count"></div>
+</br>
+<a href="https://twitter.com/share" class="twitter-share-button twitter"
+data-url="<%= request.base_url + '?id=' + note.id.to_s %>"
+data-text="<%= note.desc %>"
+data-count="vertical"
+data-hashtags="Gratitude">Tweet</a>

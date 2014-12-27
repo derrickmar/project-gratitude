@@ -3,6 +3,7 @@ console.log('should be reloading masonry why does it stop scrolling?');
 // script for adding note to share modal
 var share_note_modal = "<%= escape_javascript render('share_note_modal') %>";
 var share_note_modal_id = 'share-note-modal' + <%= @note.id %>;
+
 // elems.push(content);
 $('#share-modal-body').empty().append(share_note_modal);
 FB.XFBML.parse(document.getElementById(share_note_modal_id));
@@ -11,13 +12,14 @@ twttr.widgets.load(document.getElementById(share_note_modal_id));
 // script for adding note to isotope container
 // TODO: ADD TILT ON NOTE_CONTENT
 var note_content = "<%= escape_javascript render('add_note') %>";
-var id = 'note' + <%= @note.id %>;
+var id = 'notepreview' + <%= @note.id %>;
 $('.notes-holder').isotope('insert', $(note_content));
 
-FB.XFBML.parse(document.getElementById(id));
-twttr.widgets.load(document.getElementById(id));
+// TODO: Find a way to load social plugins faster
+// Removed social plugins on note preview on all.html.erb because it takes to long to load for each note.
+// FB.XFBML.parse(document.getElementById(id));
+// twttr.widgets.load(document.getElementById(id));
 
-
-// NOT sure why scroll messes up on ajax but seems to fix it
+// NOT sure why scroll messes up on ajax but this seems to fix it
 $('body').css("overflow-y", "scroll");
 $('#note_desc').val('')

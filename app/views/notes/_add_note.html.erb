@@ -1,5 +1,5 @@
 <%= link_to(@note, remote: true) do %>
-	<div class="note-holder"  id="<%= 'note' + @note.id.to_s %>">
+	<div class="note-holder"  id="<%= 'notepreview' + @note.id.to_s %>">
 		<% if !@note.images.empty? %>
 			<div class="note-image">
 				<% @note.images.each do |image| %>
@@ -10,13 +10,6 @@
 
 			<div class="note">
 				<%= @note.desc %>
-			</div>
-			<div class="note-buttons">
-			      <div class="fb-share-button facebook" data-href="<%= request.base_url + note_path(@note) %>" data-image="<%= @note.images.first.pic.url(:original) if !@note.images.empty? %>"  data-layout="button_count"></div>
-			      <a href="https://twitter.com/share" class="twitter-share-button twitter"
-			      data-url="<%= request.base_url + note_path(@note) %>"
-			      data-text="<%= @note.desc %>"
-			      data-hashtags="Gratitude">Tweet</a>
 			</div>
 		</div>
 <% end %>

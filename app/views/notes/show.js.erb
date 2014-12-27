@@ -1,5 +1,19 @@
-console.log('should be runnning show.js.erb');
-var container = $('#show-note-modal').find('.modal-body');
-container.empty();
-container.html("<%= escape_javascript render('note') %>");
+console.log('runnning show.js.erb');
+var $show_note_modal = $('#show-note-modal')
+
+var button_holder = $show_note_modal.find('.sidebar-social-btns');
+var social_buttons = "<%= escape_javascript render(partial: 'shared/social_buttons', locals: {note: @note}) %>"
+button_holder.empty();
+button_holder.html(social_buttons);
+
+var body = $show_note_modal.find('.modal-body');
+var content = "<%= escape_javascript render('note') %>"
+console.log(content);
+body.empty();
+body.html(content);
+
+var show_note_id = "#note" + <%= @note.id %>
+console.log("show_note_id", show_note_id);
+FB.XFBML.parse(document.getElementById(show_note_id));
+twttr.widgets.load(document.getElementById(show_note_id));
 $('#show-note-modal').modal('show');
