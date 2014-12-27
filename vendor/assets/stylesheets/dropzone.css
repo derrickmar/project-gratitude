@@ -51,8 +51,8 @@
 }
 .dropzone .dz-preview .dz-details,
 .dropzone-previews .dz-preview .dz-details {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   position: relative;
   background: #ebebeb;
   padding: 5px;
@@ -68,8 +68,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 }
 .dropzone .dz-preview .dz-details .dz-size,
 .dropzone-previews .dz-preview .dz-details .dz-size {
@@ -159,7 +159,7 @@
   -webkit-border-radius: 3px;
   border-radius: 3px;
   background: rgba(0,0,0,0.03);
-  padding: 23px;
+  padding: 10px;
 }
 .dropzone .dz-default.dz-message {
   opacity: 1;
@@ -170,7 +170,7 @@
   -o-transition: opacity 0.3s ease-in-out;
   -ms-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
-  background: url('spritemap.png') no-repeat -1px 0;
+  background: url('images/spritemap.png') no-repeat -1px 0;
   background-size: 284px 180px;
   width: 196px;
   height: 176px;
@@ -272,7 +272,7 @@
   }
   .dropzone .dz-preview .dz-error-mark,
   .dropzone-previews .dz-preview .dz-error-mark {
-    background: url('spritemap.png') no-repeat -241px -100px;
+    background: url('images/spritemap.png') no-repeat -241px -100px;
   }
   .dropzone .dz-preview .dz-success-mark,
   .dropzone-previews .dz-preview .dz-success-mark {
