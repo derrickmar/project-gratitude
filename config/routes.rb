@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :images, only: [:update, :create, :destroy]
 
-  resources :notes, except: [:show, :index] do
+  resources :notes, except: [:index] do
     member do
       patch 'like', to: 'notes#like'
       patch 'unlike', to: 'notes#unlike'

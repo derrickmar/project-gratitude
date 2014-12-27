@@ -30,7 +30,6 @@ NotesController.prototype.all = function() {
                     $newElems.imagesLoaded(function() {
                         isotopy.container.isotope('appended', $newElems);
                     });
-
                 });
             },
             triggerIsotope: function() {
@@ -46,7 +45,6 @@ NotesController.prototype.all = function() {
                 });
             },
             randomRotate: function(el) {
-                console.log("RUNNING RANDOM ROTATE");
                 var randRotation = Math.floor((Math.random() * 5) + 1);
                 if (el.length == 1) {
                     randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
@@ -55,8 +53,8 @@ NotesController.prototype.all = function() {
                     el.each(function(index) {
                         // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
                         randRotation *= index % 2 == 0 ? 1 : -1;
-                        $(this).css("transform", "rotate(" + randRotation + "deg)")
-                    })
+                        $(this).css("transform", "rotate(" + randRotation + "deg)");
+                    });
                 }
             }
         }
@@ -68,8 +66,6 @@ NotesController.prototype.all = function() {
                 this.startModalShow();
                 $('#create-new-note').on('click', function() {
                     console.log("it doesn't show it multiple times?");
-                    // TODO for some reason create modal doesn't show after creating a note
-                    // Need to hide and show it?
                     $('#create-modal').modal('show');
                 })
             },
@@ -119,14 +115,11 @@ NotesController.prototype.all = function() {
                     }
                 });
 
-                // If id params exist show thoe modal
                 var search = location.search.substring(1);
-                var params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
-                console.log(params["id"]);
-                // var tmp = document.createElement('a');
-                // var show_note_url = tmp.hostname;
-                // console.log(show_note_url);
-                console.log(window.location.origin);
+                var params = search ? JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
+                    function(key, value) {
+                        return key === "" ? value : decodeURIComponent(value)
+                    }) : {}
                 if ("id" in params) {
                     // If params exist in url then show the note
                     $.ajax({
@@ -146,7 +139,6 @@ NotesController.prototype.all = function() {
                     modals.init();
                 });
             },
-
         }
 
         inits.initialize();

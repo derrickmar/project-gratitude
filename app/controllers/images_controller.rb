@@ -4,6 +4,13 @@ class ImagesController < ApplicationController
 	end
 
 	def destroy
+		puts "DESTROYING IMAGE"
+		@image = Image.find(params[:id])
+		@image.destroy
+		respond_to do |format|
+			format.html { redirect_to root_path }
+			format.js
+		end
 	end
 
 	def create
