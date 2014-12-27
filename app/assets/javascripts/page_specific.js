@@ -4,14 +4,6 @@ NotesController.prototype.all = function() {
     (function($, window, document) {
         console.log('Executing page specific javascript notes#all');
 
-        $(".notes-holder").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ".note-holder", function(event) {
-            // IF CASE IS TO PREVENT RANDOMROTATE BEING CALLED MULTIPLE TIMES FOR A NOTE HOLDER
-            if (event.originalEvent.propertyName == 'opacity') {
-                // console.log($(this));
-                isotopy.randomRotate($(this));
-            }
-        });
-
         var isotopy = {
             container: null,
             onReady: function() {
@@ -23,11 +15,8 @@ NotesController.prototype.all = function() {
 
                 $('.notes-holder').infinitescroll({
                     navSelector: ".note-pagination-links",
-                    // selector for the paged navigation (it will be hidden)
                     nextSelector: ".page > a[rel='next']",
-                    // selector for the NEXT link (to page 2)
                     itemSelector: ".note-holder-link",
-                    // debug: true,
                     loading: {
                         img: "http://i.imgur.com/qkKy8.gif",
                         msgText: "Loading new Graddys...",
@@ -113,20 +102,54 @@ NotesController.prototype.all = function() {
             }
         }
 
-        // $(window).load(function() {
-        // console.log('running window load in notes#all');
-        // TODO: Will this run correctly alhtough we can't put it in window.load?
-        isotopy.onReady();
-        // })
+        var inits = {
+            initialize: function() {
+                // $(window).load(function() {
+                // console.log('running window load in notes#all');
+                // TODO: Will this run correctly alhtough we can't put it in window.load?
+                isotopy.onReady();
+                // })
 
-        // if (isotopy.ranOnce) {
-        //     isotopy.onReady();
-        // }
+                // Infinite scroll actions
+                $(".notes-holder").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ".note-holder", function(event) {
+                    // IF CASE IS TO PREVENT RANDOMROTATE BEING CALLED MULTIPLE TIMES FOR A NOTE HOLDER
+                    if (event.originalEvent.propertyName == 'opacity') {
+                        // console.log($(this));
+                        isotopy.randomRotate($(this));
+                    }
+                });
 
-        $(document).ready(function() {
-            console.log('in document the ready');
-            modals.init();
-        });
+                // If id params exist show thoe modal
+                var search = location.search.substring(1);
+                var params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
+                console.log(params["id"]);
+                // var tmp = document.createElement('a');
+                // var show_note_url = tmp.hostname;
+                // console.log(show_note_url);
+                console.log(window.location.origin);
+                if ("id" in params) {
+                    // If params exist in url then show the note
+                    $.ajax({
+                        type: "GET",
+                        dataType: "script",
+                        url: window.location.origin + "/notes/" + params["id"],
+                    }).done(function(result) {
+                        console.log("AJAX show note successful");
+                    }).fail(function(result) {
+                        console.log("Something wrong with ajax call");
+                    });
+                }
+
+                // initialize modals
+                $(document).ready(function() {
+                    console.log('in document the ready');
+                    modals.init();
+                });
+            },
+
+        }
+
+        inits.initialize();
 
     }(window.jQuery, window, document));
 };

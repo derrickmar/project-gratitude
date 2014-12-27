@@ -1,7 +1,8 @@
 class NotesController < ApplicationController
-	protect_from_forgery :except => [:create, :show]
+	protect_from_forgery :except => [:create, :show, :all]
 	before_action :set_note, only: [:show, :edit, :update, :destroy]
 
+	# http://localhost:3000/?shownote=1
 	def all
 		@note = Note.new
 		@notes = Note.all.page(params[:page])
