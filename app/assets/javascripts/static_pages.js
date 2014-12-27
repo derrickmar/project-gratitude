@@ -28,12 +28,23 @@ $(document).ready(function() {
                 $('#image_id_for_note').val(response.image_id);
                 // TODO: Remember in note controller to clear this value of successful submission
                 var remove_link = "/images/" + response.image_id
-                var removeButton = Dropzone.createElement("<a class='dz-remove' href='" + remove_link + "' data-remote='true' data-method='delete' data-dz-remove>" + "Remove File" + "</a>");
+                console.log(window.location.origin + remove_link);
+                var removeButton = Dropzone.createElement("<a class='dz-remove' data-dz-remove>" + "Remove File" + "</a>");
                 removeButton.addEventListener("click", function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    _this.removeFile(file);
-                })
+                    $.ajax({
+                        type: "DELETE",
+                        url: window.location.origin + remove_link,
+                    }).done(function(result) {
+                        console.log("Delete successfully");
+                        _this.removeFile(file);
+                    }).fail(function(result) {
+                        console.log("something went wrong");
+                        console.log(result);
+                        $('#image-error').text(result.message);
+                    });
+                });
                 file.previewElement.appendChild(removeButton);
             });
             this.on("complete", function(file, response) {

@@ -19,6 +19,7 @@
             </div>
             <div class="col-sm-4">
               <h4> Add an image (optional) </h4>
+              <div class="alert-error" id="image-error"> </div>
               <%= form_for(Image.new, html: { multipart: true, id: 'image_upload', class: "dropzone"}) do |f|  %>
               <div class="fallback">
                 <%= f.file_field :image %><br>

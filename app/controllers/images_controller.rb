@@ -6,10 +6,10 @@ class ImagesController < ApplicationController
 	def destroy
 		puts "DESTROYING IMAGE"
 		@image = Image.find(params[:id])
-		@image.destroy
-		respond_to do |format|
-			format.html { redirect_to root_path }
-			format.js
+		if @image.destroy
+			render json: { success: true }, :status => 200
+		else
+			render json: { success: false, message: "Sorry for some reason we could not delete the image. Please let us know and we'll try to fix it soon!" }, :status => 400
 		end
 	end
 
