@@ -3,13 +3,15 @@ module DeviseHelper
     return '' if resource.errors.empty?
 
     if resource.errors.added?(:email, :taken)
-      if User.find_by(email: resource.email).identities.count > 0
-        # Rails API doesn't seem to have a way to get a specific error with value
+      hasOauthIdentity =  User.find_by(email: resource.email).identities.any? do |identity|
+        identity.provider == 'facebook'
+      end
+      if hasOauthIdentity
         resource.errors.delete(:email)
         resource.errors.add(:email, 'was authenticated through Facebook.  Please sign in with FB')
       end
     end
-
+      
     messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
     html = <<-HTML
     <div class="alert alert-error alert-block"> <button type="button"

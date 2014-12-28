@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :notes
   has_many :likes
-  has_many :identities
+  has_many :identities, :dependent => :destroy
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
     # Get the identity and user if they exist
-    identity = Identity.find_for_oauth_and_local(auth)
+    identity = Identity.find_for_oauth(auth)
 
     # If a signed_in_resource is provided it always overrides the existing user
     # to prevent the identity being locked with accidentally created accounts.
