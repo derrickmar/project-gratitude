@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'sample' => 'static_pages#sample'
  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
  
- devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+ devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
 
 
   # patch '/notes/:id/like', to: 'notes#like'

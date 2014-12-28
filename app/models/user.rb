@@ -33,11 +33,12 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :notes
   has_many :likes
+  has_many :identities
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
-    :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
@@ -46,11 +47,11 @@ class User < ActiveRecord::Base
   validates_attachment :avatar,
   :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
 
-
+  # Gets called for oauth providers for authentication
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
     # Get the identity and user if they exist
-    identity = Identity.find_for_oauth(auth)
+    identity = Identity.find_for_oauth_and_local(auth)
 
     # If a signed_in_resource is provided it always overrides the existing user
     # to prevent the identity being locked with accidentally created accounts.
@@ -76,7 +77,7 @@ class User < ActiveRecord::Base
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20], #create random password
           is_guest: false
-        )
+          )
         user.skip_confirmation!
         user.save!
       end

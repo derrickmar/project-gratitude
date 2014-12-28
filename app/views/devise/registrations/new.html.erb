@@ -15,14 +15,13 @@
       <div class="form-group">
         <%= f.label :email, class: "control-label col-xs-3" %>
         <div class="col-xs-9">
-          <%= f.email_field :email, autofocus: "off", class: "form-control" %>
+          <%= f.email_field :email, class: "form-control" %>
         </div>
       </div>
       
       <div class="form-group">
         <%= f.label :password, class: "control-label col-xs-3" %>
         <div class="col-xs-9">
-          <%= f.label :password %>
           <% if @validatable %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
@@ -33,7 +32,7 @@
       <div class="form-group">
         <%= f.label :password_confirmation, class: "control-label col-xs-3 label-small" %>
         <div class="col-xs-9">
-          <%= f.password_field :password_confirmation, autofocus: "off", class: "form-control" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
         </div>
       </div>
       

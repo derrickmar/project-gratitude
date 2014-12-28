@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-
 	# if user is logged in, return current_user, else return guest_user
 	def current_or_guest_user
 		if current_user
@@ -78,7 +77,7 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password) }
+		devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation) }
 		devise_parameter_sanitizer.for(:account_update) << [:avatar, :name]
 		devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :avatar, :email, :password, :password_confirmation, :current_password) }
 		# devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :avatar) }
