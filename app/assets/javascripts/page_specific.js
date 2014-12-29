@@ -7,10 +7,11 @@ NotesController.prototype.all = function() {
         var isotopy = {
             container: null,
             onReady: function() {
-                WebFont.load({
-                    active: isotopy.triggerIsotope(),
-                    inactive: isotopy.triggerIsotope()
-                });
+                isotopy.triggerIsotope(),
+                // WebFont.load({
+                //     active: isotopy.triggerIsotope(),
+                //     // inactive: isotopy.triggerIsotope()
+                // });
                 this.randomRotate($('.note-holder'));
 
                 $('.notes-holder').infinitescroll({
@@ -32,6 +33,7 @@ NotesController.prototype.all = function() {
             },
             triggerIsotope: function() {
                 isotopy.container = $('.notes-holder').imagesLoaded(function() {
+                    console.log("HOW MANY TIMES??");
                     isotopy.container.isotope({
                         itemSelector: '.note-holder',
                         transformsEnabled: false,
@@ -42,20 +44,12 @@ NotesController.prototype.all = function() {
                         // getSortData
                         // sortBy
                     })
-                    isotopy.container.isotope('on', 'layoutComplete', function(isoInstance, laidOutItems) {
-                        console.log('trigger layoutComplete isotope');
-                        console.log(laidOutItems);
-                        // isotopy.randomRotate($('.note-holder'));
-                        $('.note-holder').each(function() {
-                            var position = $(this).position();
-                            // console.log(position);
-                            $(this).data("pos_top", position);
-                            $(this).attr("data-postop", position);
-                        });
-                    });
+
                 });
+                isotopy.callbacks;
                 // trigguer on layoutComplete here doesn't seem to work
             },
+
             randomRotate: function(el) {
                 var randRotation = Math.floor((Math.random() * 5) + 1);
                 if (el.length == 1) {
@@ -68,6 +62,19 @@ NotesController.prototype.all = function() {
                         $(this).css("transform", "rotate(" + randRotation + "deg)");
                     });
                 }
+            },
+            callbacks: function() {
+                isotopy.container.isotope('on', 'layoutComplete', function(isoInstance, laidOutItems) {
+                    console.log('trigger layoutComplete isotope');
+                    console.log(laidOutItems);
+                    // isotopy.randomRotate($('.note-holder'));
+                    $('.note-holder').each(function() {
+                        var position = $(this).position();
+                        // console.log(position);
+                        $(this).data("pos_top", position);
+                        $(this).attr("data-postop", position);
+                    });
+                });
             }
         }
 
