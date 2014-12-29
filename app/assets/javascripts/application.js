@@ -16,5 +16,8 @@
 //= require dropzone.min
 //= require bootstrap-sprockets
 //= require masonry/jquery.infinitescroll.min
+//= require jquery.remotipart
+//= require jquery.jcrop
+//= require papercrop
 //= require turbolinks
 //= require_tree .

@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   # patch '/notes/:id/like', to: 'notes#like'
   # patch '/notes/:id/like', to: 'notes#unlike'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      patch 'update_profile_pic', to: 'users#update_profile_pic'
+      get 'crop_image', to: 'users#crop_image'
+    end
+  end
   resources :images, only: [:update, :create, :destroy]
 
   resources :notes, except: [:index] do

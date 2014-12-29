@@ -1,0 +1,4 @@
+var content = "<%= escape_javascript render('crop_pic') %>";
+var $modal = $('#crop-pic-modal');
+$modal.find('.modal-body').append(content);
+$modal.modal('show');

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   protect_from_forgery
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup, :update_profile_pic]
 
   def create
     @user = User.create(user_params)
@@ -31,6 +31,18 @@ class UsersController < ApplicationController
   #   end
   # end
 
+  def crop_image
+
+  end
+
+  def update_profile_pic
+    if @user.update_attributes(user_avatar_params)
+      redirect_to crop_image_path(@user)
+    else
+      render 'devise/registrations/edit'
+    end
+  end
+
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
     # authorize! :update, @user 
@@ -44,15 +56,15 @@ class UsersController < ApplicationController
       #   puts "found existing user"
       #   redirect_to user_omniauth_authorize_path(:facebook)
         # redirect_to root_path
-      if @user.update(user_params)
-        @user.skip_reconfirmation!
-        sign_in(@user, :bypass => true)
-        redirect_to root_path, notice: 'Your profile was successfully updated.'
-      else
-        @show_errors = true
+        if @user.update(user_params)
+          @user.skip_reconfirmation!
+          sign_in(@user, :bypass => true)
+          redirect_to root_path, notice: 'Your profile was successfully updated.'
+        else
+          @show_errors = true
+        end
       end
     end
-  end
 
   # DELETE /users/:id.:format
   def destroy
@@ -69,9 +81,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def user_avatar_params
+    params.require(:user).permit(:avatar)
+  end
+
   # def user_params
   #     accessible = [ :name, :email, :avatar ] # extend with your own params
   #     accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
   #     params.require(:user).permit(accessible)
   #   end
-  end
+end

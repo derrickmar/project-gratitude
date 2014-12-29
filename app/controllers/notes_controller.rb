@@ -36,7 +36,7 @@ class NotesController < ApplicationController
 	def show
 		@comment = Comment.new
 		respond_to do |format|
-			format.html { @note } # support a non-ajax call
+			format.html { @note }
 			format.js
 		end
 		# TODO: PREVENT PALOMA _hook.html.erb FROM RENDERING ON AJAX CALL (for some reason modal doesn't show up when paloma is enabled)

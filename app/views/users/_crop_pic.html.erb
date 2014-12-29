@@ -1,0 +1,7 @@
+<div class="row">
+	<%= form_for @user do |f| %>
+	    <%= f.cropbox :avatar, width: 300 %>
+	    <%= f.crop_preview :avatar, :width => 150 %>
+	    <%= f.submit 'Save' %>
+	<% end %>
+</div>

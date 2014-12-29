@@ -45,6 +45,8 @@ body {
     display: inline-block;
 }
 
+//========= BUTTON STYLES
+
 //======= INFINITE SCROLLING STYLES
 #infscr-loading {
     text-align: center;
@@ -186,7 +188,7 @@ body {
     .authentication-box {
         font-family: $primary-font;
         background-color: white;
-        padding: 15px 30px;
+        padding: 15px 15px;
 
         h2 {
             margin-top: 5px;

@@ -38,6 +38,9 @@ gem 'masonry-rails'
 gem 'shareable'
 gem 'paloma' 
 gem 'kaminari'
+gem 'papercrop'
+gem "cocaine"
+gem 'remotipart'
 
 group :test, :development do
 	gem "better_errors"

@@ -32,4 +32,5 @@ doc/
 # Ignore application configuration
 /config/application.yml
 /public/system/images
+/public/system/users
 ngrok
