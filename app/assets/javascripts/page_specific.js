@@ -24,11 +24,9 @@ NotesController.prototype.all = function() {
                         speed: "fast"
                     }
                 }, function(arrayOfNewElems) {
-                    // console.log("newElems", arrayOfNewElems);
                     var $newElems = $(arrayOfNewElems);
-
                     $newElems.imagesLoaded(function() {
-                        isotopy.container.isotope('appended', $newElems);
+                        isotopy.container.append($newElems).isotope('appended', $newElems);
                     });
                 });
             },
@@ -40,9 +38,23 @@ NotesController.prototype.all = function() {
                         masonry: {
                             columnWidth: 50,
                             gutter: 10
-                        }
+                        },
+                        // getSortData
+                        // sortBy
                     })
+                    isotopy.container.isotope('on', 'layoutComplete', function(isoInstance, laidOutItems) {
+                        console.log('trigger layoutComplete isotope');
+                        console.log(laidOutItems);
+                        // isotopy.randomRotate($('.note-holder'));
+                        $('.note-holder').each(function() {
+                            var position = $(this).position();
+                            // console.log(position);
+                            $(this).data("pos_top", position);
+                            $(this).attr("data-postop", position);
+                        });
+                    });
                 });
+                // trigguer on layoutComplete here doesn't seem to work
             },
             randomRotate: function(el) {
                 var randRotation = Math.floor((Math.random() * 5) + 1);

@@ -13,7 +13,10 @@ twttr.widgets.load(document.getElementById(share_note_modal_id));
 // TODO: ADD TILT ON NOTE_CONTENT
 var note_content = "<%= escape_javascript render('add_note') %>";
 var id = 'notepreview' + <%= @note.id %>;
-$('.notes-holder').isotope('insert', $(note_content));
+
+$(note_content).imagesLoaded(function() {
+	$('.notes-holder').prepend($(note_content)).isotope('prepended', $(note_content));
+});
 
 // TODO: Find a way to load social plugins faster
 // Removed social plugins on note preview on all.html.erb because it takes to long to load for each note.

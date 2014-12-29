@@ -5,7 +5,7 @@ class NotesController < ApplicationController
 	# http://localhost:3000/?shownote=1
 	def all
 		@note = Note.new
-		@notes = Note.all.page(params[:page])
+		@notes = Note.order('created_at DESC').page(params[:page])
 	end
 
 	def new
