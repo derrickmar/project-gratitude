@@ -1,5 +1,5 @@
 <div class="row authentication-holder registrations">
-  <div class="col-md-4 col-xs-12">
+  <div class="col-md-5 col-xs-12">
     <div class="authentication-box">
       <h2>Edit Your Profile</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal"}) do |f| %>
@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  <div class="col-md-4 col-xs-12">
+  <div class="col-md-3 col-xs-12">
     <div class="authentication-box">
       <h2>Profile Picture</h2>
       <% if resource.avatar_file_name.nil? %>
@@ -56,11 +56,8 @@
           <%= f.submit "Save picture", class: "btn btn-primary" %>
         <% end %>
       <% else %>
-       <%= form_for @user do |f| %>
-          <%= f.cropbox :avatar, width: 300 %>
-          <%= f.crop_preview :avatar, :width => 150 %>
-          <%= f.submit 'Save' %>
-      <% end %>
+        <%= image_tag @user.avatar.url(:thumb) %>
+        <div class="btn btn-primary show-crop-modal"> Crop </div>
       <% end %>
     </div>
   </div>

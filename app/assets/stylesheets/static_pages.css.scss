@@ -45,7 +45,53 @@ body {
     display: inline-block;
 }
 
-//========= BUTTON STYLES
+//========= CROPPING PAGE STYLES
+#crop-pic-modal {
+    .crop-header {
+        font-size: 22px;
+    }
+
+    .crop-pic-holder {
+        display: inline-block;
+    }
+
+    .btn-primary {
+        padding: 5px 30px;
+        margin-top: 10px;
+    }
+}
+
+.crop-holder {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    position: relative;
+
+    .header {
+        display: inline-block;
+        background-color: $secondary;
+        color: white;
+        padding: 5px 10px;
+        font-size: 18px;
+        position: absolute;
+        left: -80px;
+        bottom: -4px;
+        z-index: 1;
+        transform: rotate(20deg);
+    }
+
+    .btn-primary {
+        padding: 5px 30px;
+        margin-top: 10px;
+    }
+}
+
+//======= BUTTON STYLES
+.btn-primary {
+    background-color: $secondary;
+    border: 1px solid black;
+}
 
 //======= INFINITE SCROLLING STYLES
 #infscr-loading {
@@ -194,10 +240,6 @@ body {
             margin-top: 5px;
             font-size: 21px;
         }
-    }
-
-    .btn-primary {
-        background-color: $secondary;
     }
 }
 

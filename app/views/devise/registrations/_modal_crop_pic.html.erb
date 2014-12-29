@@ -1,11 +1,20 @@
 <div class="modal fade" id="crop-pic-modal" tabindex="-1" role="dialog" aria-labelledby="shareModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-body">
-
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="crop-header"> Crop your picture </div>
+			</div>
+			<div class="modal-body">
+				<div class="row text-center">
+					<div class="crop-pic-holder">
+						<%= form_for(@user, url: update_profile_pic_user_path(@user), html: { method: :patch, :multipart => true }) do |f| %>
+						<%= f.hidden_field :cropping, value: true %>
+						<%= f.cropbox :avatar, width: 300 %>
+						<%= f.submit 'Save', class: "btn btn-primary" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

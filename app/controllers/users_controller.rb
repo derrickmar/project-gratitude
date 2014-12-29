@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   protect_from_forgery
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup, :update_profile_pic, :crop_image]
+  before_action :set_user, only: [:show, :update, :edit, :update, :destroy, :finish_signup, :update_profile_pic, :crop_image]
 
   def create
     @user = User.create(user_params)
@@ -9,6 +9,9 @@ class UsersController < ApplicationController
   # GET /users/:id.:format
   def show
     # authorize! :read, @user CANCAN
+  end
+
+  def update
   end
 
   # GET /users/:id/edit
@@ -35,10 +38,19 @@ class UsersController < ApplicationController
   end
 
   def update_profile_pic
-    if @user.update_attributes(user_avatar_params)
-      redirect_to crop_image_path(@user)
+    if params[:user][:cropping]
+      if @user.update_attributes(crop_params)
+        puts "successfully cropped pic"
+        redirect_to edit_user_registration_path, :notice=> "Successfully cropped profile picture"
+      else
+        render 'devise/registrations/edit', :alert => "Sorry, something went wrong."
+      end
     else
-      render 'devise/registrations/edit'
+      if @user.update_attributes(user_avatar_params)
+        redirect_to crop_image_user_path(@user)
+      else
+        render 'devise/registrations/edit'
+      end
     end
   end
 
@@ -83,6 +95,11 @@ class UsersController < ApplicationController
   def user_avatar_params
     params.require(:user).permit(:avatar)
   end
+
+  def crop_params
+    params.require(:user).permit(:avatar, :avatar_original_w, :avatar_original_h, :avatar_box_w, :avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h, :avatar_aspect)
+  end
+
 
   # def user_params
   #     accessible = [ :name, :email, :avatar ] # extend with your own params

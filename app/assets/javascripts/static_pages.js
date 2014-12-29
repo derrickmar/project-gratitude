@@ -53,4 +53,8 @@ $(document).ready(function() {
             });
         }
     });
+
+    $('.show-crop-modal').on("click", function() {
+        $('#crop-pic-modal').modal('show');
+    })
 });

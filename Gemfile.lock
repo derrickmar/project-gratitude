@@ -140,6 +140,10 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    papercrop (0.2.0)
+      jquery-rails
+      paperclip (>= 3.4)
+      rails (>= 3.1)
     pg (0.17.1)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -252,6 +256,7 @@ DEPENDENCIES
   omniauth-facebook
   paloma
   paperclip (~> 4.2)
+  papercrop
   pg
   rails (= 4.1.6)
   rails_12factor
