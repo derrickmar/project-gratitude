@@ -37,10 +37,8 @@ gem 'aws-sdk'
 gem 'masonry-rails'
 gem 'shareable'
 gem 'paloma' 
-gem 'kaminari'
+gem 'kaminari' #pagination gem
 gem 'papercrop'
-gem "cocaine"
-gem 'remotipart'
 
 group :test, :development do
 	gem "better_errors"

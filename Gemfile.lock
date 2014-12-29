@@ -140,10 +140,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    papercrop (0.2.0)
-      jquery-rails
-      paperclip (>= 3.4)
-      rails (>= 3.1)
     pg (0.17.1)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -171,7 +167,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
-    remotipart (1.2.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec-collection_matchers (1.1.2)
@@ -244,7 +239,6 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.1)
   bower-rails
   capybara
-  cocaine
   coffee-rails (~> 4.0.0)
   database_cleaner
   devise
@@ -258,11 +252,9 @@ DEPENDENCIES
   omniauth-facebook
   paloma
   paperclip (~> 4.2)
-  papercrop
   pg
   rails (= 4.1.6)
   rails_12factor
-  remotipart
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

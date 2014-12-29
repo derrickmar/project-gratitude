@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   protect_from_forgery
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup, :update_profile_pic]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup, :update_profile_pic, :crop_image]
 
   def create
     @user = User.create(user_params)
@@ -32,7 +32,6 @@ class UsersController < ApplicationController
   # end
 
   def crop_image
-
   end
 
   def update_profile_pic
