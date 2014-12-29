@@ -27,9 +27,6 @@ body {
     background-size: 250px 250px;
     overflow-y: scroll;
     font-family: $primary-font;
-//    background-size: cover;
-//    background-repeat: repeat-y;
-//    background-repeat: repeat-x;
 }
 
 .hidden {
@@ -148,18 +145,6 @@ body {
         }
     }
 
-    .sign_out {
-        color: white;
-        background-color: #2c3e50;
-        font-size: 1.4em;
-        margin-left: 15px;
-        transform: rotate(-4deg);
-        &:hover {
-            background-color: white;
-            color: black !important;
-        }
-    }
-    
     .navbar-right {
         position:relative;
         overflow: visible;
@@ -173,6 +158,40 @@ body {
          transform: rotate(9deg);
      }
  }
+
+ #user-holder {
+    margin-left: 15px;
+    background-color: white;
+    padding: 5px;
+    transform: rotate(4deg);
+    
+    #profile-pic-link {
+        padding: 0;
+        &:hover {
+            opacity: 0.9;
+        }
+
+        #profile-pic {
+          width: 50px;
+      }
+
+  }   
+  .sign_out {
+    color: white;
+    background-color: #2c3e50;
+    width: 67px;
+    padding: 2px 7px;
+    font-size: 12px;
+    position: absolute;
+    right: -31px;
+    bottom: -19px;
+    transform: rotate(-12deg);
+    &:hover {
+        background-color: white;
+        color: black !important;
+    }
+}
+}
 }
 
 .navbar-brand {
@@ -424,9 +443,7 @@ body {
 }
 
 textarea{
-//    margin-left: 47% !important;
-//    font-size: 20px !important;
-border: 1px solid black;
+    border: 1px solid black;
 }
 
 footer {

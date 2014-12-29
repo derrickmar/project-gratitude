@@ -22,7 +22,11 @@
       <li><a id="create-new-note"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Spread Gratitude</a> </li>
       <div class="graddy-num"> <%= Note.all.count %> Graddys Sent </div>
       <% if user_signed_in? && !current_or_guest_user.is_guest %>
-      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete , class: "sign_out" %></li>
+      <li id="user-holder">
+        <%= link_to edit_user_registration_path, id: "profile-pic-link" do %>
+          <%= image_tag current_user.avatar.url(:thumb), id: "profile-pic" %>
+        <% end %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete , class: "sign_out" %></li>
       <% else %>
       <li>
         <%= link_to new_user_session_path, class: "settings" do %>
