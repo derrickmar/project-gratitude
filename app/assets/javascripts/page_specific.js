@@ -10,7 +10,7 @@ NotesController.prototype.all = function() {
                 isotopy.triggerIsotope(),
                 // WebFont.load({
                 //     active: isotopy.triggerIsotope(),
-                //     // inactive: isotopy.triggerIsotope()
+                //     inactive: isotopy.triggerIsotope()
                 // });
                 this.randomRotate($('.note-holder'));
 

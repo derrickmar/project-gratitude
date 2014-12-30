@@ -47,14 +47,14 @@ $(document).ready(function() {
                 });
                 file.previewElement.appendChild(removeButton);
             });
-            this.on("complete", function(file, response) {
-                $("#create-note-button").attr('value', "Spread the gratitude")
-                $("#create-note-button").prop("disabled", false);
-            });
-        }
-    });
+  this.on("complete", function(file, response) {
+    $("#create-note-button").attr('value', "Spread the gratitude")
+    $("#create-note-button").prop("disabled", false);
+});
+}
+});
 
-    $('.show-crop-modal').on("click", function() {
-        $('#crop-pic-modal').modal('show');
-    })
+  $('.show-crop-modal').on("click", function() {
+    $('#crop-pic-modal').modal('show');
+})
 });
