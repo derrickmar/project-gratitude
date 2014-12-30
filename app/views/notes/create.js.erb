@@ -22,14 +22,15 @@ var $notejq = $(note_content);
 // console.log($(note_content);
 // $('.notes-holder').prepend($(note_content)).isotope('prepended', $(note_content));
 // only keeps content within itemSelector of isotope!
-$('.notes-holder').isotope('insert', $notejq);
-// console.log($(window).scrollTop());
-$notejq.css("top", $(window).scrollTop());
-// debugger;
-$('.notes-holder').isotope('updateSortData').isotope();
-// $('.notes-holder').isotope('layout').isotope();
 
-// $('.notes-holder').isotope('updateSortData').isotope();
+// Call image loaded so positioning is correct
+$('.notes-holder').imagesLoaded(function() {
+	$('.notes-holder').isotope('insert', $notejq);
+});
+
+$notejq.css("top", $(window).scrollTop());
+$('.notes-holder').isotope('updateSortData').isotope();
+
 // TODO: Find a way to load social plugins faster
 // Removed social plugins on note preview on all.html.erb because it takes to long to load for each note.
 // FB.XFBML.parse(document.getElementById(id));
@@ -39,4 +40,4 @@ $('.notes-holder').isotope('updateSortData').isotope();
 $('body').css("overflow-y", "scroll");
 $('#note_desc').val('');
 // console.log("HEY?");
-$('.notes-holder').isotope('reloadItems').isotope();
+$("#image_upload").get(0).dropzone.removeAllFiles();

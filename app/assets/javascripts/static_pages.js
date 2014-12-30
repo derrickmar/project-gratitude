@@ -7,7 +7,7 @@ $(document).ready(function() {
     Dropzone.autoDiscover = false;
 
     // grap our upload form by its id
-    $("#image_upload").dropzone({
+    global_dropzone = $("#image_upload").dropzone({
         maxFiles: 1,
         // restrict image size to a maximum 1MB
         maxFilesize: 10,
@@ -47,14 +47,14 @@ $(document).ready(function() {
                 });
                 file.previewElement.appendChild(removeButton);
             });
-  this.on("complete", function(file, response) {
-    $("#create-note-button").attr('value', "Spread the gratitude")
-    $("#create-note-button").prop("disabled", false);
-});
-}
-});
+            this.on("complete", function(file, response) {
+                $("#create-note-button").attr('value', "Spread the gratitude")
+                $("#create-note-button").prop("disabled", false);
+            });
+        }
+    });
 
-  $('.show-crop-modal').on("click", function() {
-    $('#crop-pic-modal').modal('show');
-})
+    $('.show-crop-modal').on("click", function() {
+        $('#crop-pic-modal').modal('show');
+    })
 });

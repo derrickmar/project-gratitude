@@ -65,11 +65,11 @@ NotesController.prototype.all = function() {
                 // debugger;
                 var randRotation = Math.floor((Math.random() * 5) + 1);
                 if (el.length == 1) {
-                    console.log("LENGTH IS 1");
+                    // console.log("LENGTH IS 1");
                     // debugger;
                     // console.log(el);
                     randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
-                    console.log(randRotation);
+                    // console.log(randRotation);
                     el.css("transform", "rotate(" + randRotation + "deg)")
                     // console.log(el.css("background-color", "red"));
                 } else {
@@ -164,7 +164,7 @@ NotesController.prototype.all = function() {
                 $(".notes-holder").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ".note-holder-link", function(event) {
                     // console.log("ENTERING");
                     // debugger;
-                    console.log(event.originalEvent.propertyName);
+                    // console.log(event.originalEvent.propertyName);
                     // IF CASE IS TO PREVENT RANDOMROTATE BEING CALLED MULTIPLE TIMES FOR A NOTE HOLDER
                     if (event.originalEvent.propertyName == 'transform') {
                         // console.log($(this));
