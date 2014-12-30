@@ -67,10 +67,11 @@ NotesController.prototype.all = function() {
                 if (el.length == 1) {
                     console.log("LENGTH IS 1");
                     // debugger;
-                    console.log(el);
+                    // console.log(el);
                     randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
-                    // el.css("transform", "rotate(" + randRotation + "deg)")
-                    el.css("background-color", "red");
+                    console.log(randRotation);
+                    el.css("transform", "rotate(" + randRotation + "deg)")
+                    // console.log(el.css("background-color", "red"));
                 } else {
                     el.each(function(index) {
                         // console.log("LOOPING");
@@ -85,16 +86,19 @@ NotesController.prototype.all = function() {
                 console.log("CALLBACKS");
                 // laidOutItems is an Array of Isotope.Items
                 // TODO: Currently don't know how to convert laidOutItems to jquery 
-                isotopy.container.isotope('on', 'layoutComplete', function(isoInstance, laidOutItems) {
-                    console.log('isotope: trigger layoutComplete event');
-                    // console.log($(laidOutItems));
-                    for (var i = 0; i < laidOutItems.length; i++) {
-                        // debugger;
-                        isotopy.randomRotate($(laidOutItems[i].element));
-                    }
-                    // debugger;
-                    // console.log(laidOutItems);
-                });
+                // isotopy.container.isotope('on', 'layoutComplete', function(isoInstance, laidOutItems) {
+                //     console.log('isotope: trigger layoutComplete event');
+                //     // console.log($(laidOutItems));
+                //     for (var i = 0; i < laidOutItems.length; i++) {
+                //         // debugger;
+                //         // isotopy.randomRotate($('.note-holder-link'));
+
+                //         isotopy.randomRotate($(laidOutItems[i].element));
+                //     }
+                //     // isotopy.randomRotate($('.note-holder-link'));
+                //     // debugger;
+                //     // console.log(laidOutItems);
+                // });
             },
             // currently don't need to use the function because we are ordering
             // by the position absolute automatically being inserted when isotope
@@ -157,13 +161,16 @@ NotesController.prototype.all = function() {
                 // })
 
                 // Infinite scroll actions
-                // $(".notes-holder").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ".note-holder-link", function(event) {
-                //     // IF CASE IS TO PREVENT RANDOMROTATE BEING CALLED MULTIPLE TIMES FOR A NOTE HOLDER
-                //     if (event.originalEvent.propertyName == 'opacity') {
-                //         // console.log($(this));
-                //         isotopy.randomRotate($(this));
-                //     }
-                // });
+                $(".notes-holder").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ".note-holder-link", function(event) {
+                    console.log("ENTERING");
+                    // debugger;
+                    console.log(event.originalEvent.propertyName);
+                    // IF CASE IS TO PREVENT RANDOMROTATE BEING CALLED MULTIPLE TIMES FOR A NOTE HOLDER
+                    if (event.originalEvent.propertyName == 'opacity') {
+                        // console.log($(this));
+                        isotopy.randomRotate($(this));
+                    }
+                });
 
                 var search = location.search.substring(1);
                 var params = search ? JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
