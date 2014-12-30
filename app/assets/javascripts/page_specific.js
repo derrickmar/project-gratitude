@@ -61,8 +61,8 @@ NotesController.prototype.all = function() {
                         },
                         sortBy: 'topPosition',
                     });
-                    isotopy.container.isotope('updateSortData').isotope();
                     // isotopy.addTopPositions($('.note-holder-link'));
+                    isotopy.container.isotope('updateSortData').isotope();
                     // isotopy.callbacks();
                 });
                 // triggering on layoutComplete here doesn't seem to work when outside of imagesLoaded

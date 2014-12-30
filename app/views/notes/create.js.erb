@@ -1,5 +1,4 @@
-console.log('should be reloading masonry why does it stop scrolling?');
-
+console.log("RUNNING CREAT.JS.ERB FOR NOTES");
 // script for adding note to share modal
 var share_note_modal = "<%= escape_javascript render('share_note_modal') %>";
 var share_note_modal_id = 'share-note-modal' + <%= @note.id %>;
@@ -12,19 +11,23 @@ twttr.widgets.load(document.getElementById(share_note_modal_id));
 // script for adding note to isotope container
 // TODO: ADD TILT ON NOTE_CONTENT
 var note_content = "<%= escape_javascript render('add_note') %>";
+var $notejq = $(note_content);
 // var parser = new DOMParser;
 // var note_content = parser.parseFromString(note_cont, "text/xml");
 // console.log(note_content);
 // console.log($(note_content));
 // var id = 'notepreview' + <%= @note.id %>;
 
-// $(note_content).css("top", $(window).scrollTop());
 // // $(note_content).css
 // console.log($(note_content);
 // $('.notes-holder').prepend($(note_content)).isotope('prepended', $(note_content));
 // only keeps content within itemSelector of isotope!
-$('.notes-holder').isotope('insert', $(note_content));
-
+$('.notes-holder').isotope('insert', $notejq);
+// console.log($(window).scrollTop());
+$notejq.css("top", $(window).scrollTop());
+// debugger;
+$('.notes-holder').isotope('updateSortData').isotope();
+// $('.notes-holder').isotope('updateSortData').isotope();
 // TODO: Find a way to load social plugins faster
 // Removed social plugins on note preview on all.html.erb because it takes to long to load for each note.
 // FB.XFBML.parse(document.getElementById(id));
