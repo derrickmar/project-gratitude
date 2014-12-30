@@ -27,6 +27,8 @@ $('.notes-holder').isotope('insert', $notejq);
 $notejq.css("top", $(window).scrollTop());
 // debugger;
 $('.notes-holder').isotope('updateSortData').isotope();
+// $('.notes-holder').isotope('layout').isotope();
+
 // $('.notes-holder').isotope('updateSortData').isotope();
 // TODO: Find a way to load social plugins faster
 // Removed social plugins on note preview on all.html.erb because it takes to long to load for each note.
@@ -35,4 +37,6 @@ $('.notes-holder').isotope('updateSortData').isotope();
 
 // NOT sure why scroll messes up on ajax but this seems to fix it
 $('body').css("overflow-y", "scroll");
-$('#note_desc').val('')
+$('#note_desc').val('');
+// console.log("HEY?");
+$('.notes-holder').isotope('reloadItems').isotope();

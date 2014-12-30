@@ -162,11 +162,11 @@ NotesController.prototype.all = function() {
 
                 // Infinite scroll actions
                 $(".notes-holder").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ".note-holder-link", function(event) {
-                    console.log("ENTERING");
+                    // console.log("ENTERING");
                     // debugger;
                     console.log(event.originalEvent.propertyName);
                     // IF CASE IS TO PREVENT RANDOMROTATE BEING CALLED MULTIPLE TIMES FOR A NOTE HOLDER
-                    if (event.originalEvent.propertyName == 'opacity') {
+                    if (event.originalEvent.propertyName == 'transform') {
                         // console.log($(this));
                         isotopy.randomRotate($(this));
                     }
