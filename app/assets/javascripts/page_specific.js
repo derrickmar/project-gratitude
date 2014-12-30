@@ -7,12 +7,13 @@ NotesController.prototype.all = function() {
         var isotopy = {
             container: null,
             onReady: function() {
-                isotopy.triggerIsotope(),
-                // WebFont.load({
-                //     active: isotopy.triggerIsotope(),
-                //     inactive: isotopy.triggerIsotope()
-                // });
-                this.randomRotate($('.note-holder'));
+                isotopy.triggerIsotope()
+                    // Seems to run both active and inactive events. Don't know why
+                    // WebFont.load({
+                    //     active: isotopy.triggerIsotope(),
+                    //     inactive: isotopy.triggerIsotope()
+                    // });
+                this.randomRotate($('.note-holder-link'));
 
                 $('.notes-holder').infinitescroll({
                     navSelector: ".note-pagination-links",
@@ -33,21 +34,38 @@ NotesController.prototype.all = function() {
             },
             triggerIsotope: function() {
                 isotopy.container = $('.notes-holder').imagesLoaded(function() {
-                    console.log("HOW MANY TIMES??");
                     isotopy.container.isotope({
-                        itemSelector: '.note-holder',
+                        itemSelector: '.note-holder-link',
                         transformsEnabled: false,
                         masonry: {
                             columnWidth: 50,
                             gutter: 10
                         },
-                        // getSortData
-                        // sortBy
-                    })
-
+                        getSortData: {
+                            topPosition: function(itemElem) {
+                                // we don't know what position the element will be at this time
+                                // so we can't sort by the positioning of the element
+                                // $(itemElem).
+                                // console.log("GET SORT DATA");
+                                // console.log(itemElem);
+                                // console.log("style", $(itemElem)[0].style);
+                                // console.log("style", $(itemElem)[0].style.cssText);
+                                // console.log("style", $(itemElem)[0].style.length);
+                                // console.log("style", $(itemElem)[0].style.top);
+                                // console.log("style2", $(itemElem).css("top"));
+                                // console.log($(itemElem)[0].style.top);
+                                var topPos = parseInt($(itemElem).css("top"));
+                                console.log(topPos);
+                                return topPos;
+                            }
+                        },
+                        sortBy: 'topPosition',
+                    });
+                    isotopy.container.isotope('updateSortData').isotope();
+                    // isotopy.addTopPositions($('.note-holder-link'));
+                    // isotopy.callbacks();
                 });
-                isotopy.callbacks;
-                // trigguer on layoutComplete here doesn't seem to work
+                // triggering on layoutComplete here doesn't seem to work when outside of imagesLoaded
             },
 
             randomRotate: function(el) {
@@ -64,16 +82,19 @@ NotesController.prototype.all = function() {
                 }
             },
             callbacks: function() {
+                console.log("CALLBACKS");
                 isotopy.container.isotope('on', 'layoutComplete', function(isoInstance, laidOutItems) {
                     console.log('trigger layoutComplete isotope');
                     console.log(laidOutItems);
-                    // isotopy.randomRotate($('.note-holder'));
-                    $('.note-holder').each(function() {
-                        var position = $(this).position();
-                        // console.log(position);
-                        $(this).data("pos_top", position);
-                        $(this).attr("data-postop", position);
-                    });
+                    isotopy.addTopPositions(laidOutItems);
+                });
+            },
+            addTopPositions: function(el) {
+                console.log("lengthtoppos", el.length);
+                el.each(function() {
+                    var position = $(this).position();
+                    $(this).data("pos_top", position.top);
+                    $(this).attr("data-postop", position.top);
                 });
             }
         }
@@ -126,7 +147,7 @@ NotesController.prototype.all = function() {
                 // })
 
                 // Infinite scroll actions
-                $(".notes-holder").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ".note-holder", function(event) {
+                $(".notes-holder").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", ".note-holder-link", function(event) {
                     // IF CASE IS TO PREVENT RANDOMROTATE BEING CALLED MULTIPLE TIMES FOR A NOTE HOLDER
                     if (event.originalEvent.propertyName == 'opacity') {
                         // console.log($(this));

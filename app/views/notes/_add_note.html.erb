@@ -1,4 +1,4 @@
-<%= link_to(@note, remote: true) do %>
+<%= link_to(@note, class: 'note-holder-link', remote: true) do %>
 	<div class="note-holder"  id="<%= 'notepreview' + @note.id.to_s %>">
 		<% if !@note.images.empty? %>
 			<div class="note-image">
