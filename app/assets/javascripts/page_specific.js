@@ -65,14 +65,18 @@ NotesController.prototype.all = function() {
                 // debugger;
                 var randRotation = Math.floor((Math.random() * 5) + 1);
                 if (el.length == 1) {
+                    console.log("LENGTH IS 1");
+                    // debugger;
+                    console.log(el);
                     randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
-                    el.css("transform", "rotate(" + randRotation + "deg)")
+                    // el.css("transform", "rotate(" + randRotation + "deg)")
+                    el.css("background-color", "red");
                 } else {
                     el.each(function(index) {
-                        console.log("LOOPING");
+                        // console.log("LOOPING");
                         // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
                         randRotation *= index % 2 == 0 ? 1 : -1;
-                        console.log($(this));
+                        // console.log($(this));
                         $(this).css("transform", "rotate(" + randRotation + "deg)");
                     });
                 }
@@ -83,11 +87,13 @@ NotesController.prototype.all = function() {
                 // TODO: Currently don't know how to convert laidOutItems to jquery 
                 isotopy.container.isotope('on', 'layoutComplete', function(isoInstance, laidOutItems) {
                     console.log('isotope: trigger layoutComplete event');
-                    console.log($(laidOutItems));
-                    isotopy.randomRotate($(laidOutItems));
+                    // console.log($(laidOutItems));
+                    for (var i = 0; i < laidOutItems.length; i++) {
+                        // debugger;
+                        isotopy.randomRotate($(laidOutItems[i].element));
+                    }
                     // debugger;
                     // console.log(laidOutItems);
-                    // isotopy.addTopPositions(laidOutItems);
                 });
             },
             // currently don't need to use the function because we are ordering
