@@ -11,7 +11,7 @@
       </div>
       <div class="col-sm-5">
         <% @note.images.each do |image| %>
-          <%= image_tag image.pic.url(:original), class: 'single-note-image' %>
+          <%= image_tag image.pic.url(:medium), class: 'single-note-image' %>
         <% end %>
       </div>
     <% end %>
