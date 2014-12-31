@@ -24,6 +24,6 @@
 
 <%= render partial: "modals/home", layout: "modals/modal_layout",
     locals: { modalID: "home-modal"} %>
-<%= render 'modals/create' %>
-<%= render 'modals/show_note' %>
+<%= render partial: "modals/create", layout: "modals/modal_layout",
+    locals: { modalID: "create-modal"} %><%= render 'modals/show_note' %>
 <%= render 'modals/share' %>
