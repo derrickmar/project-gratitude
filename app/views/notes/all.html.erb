@@ -1,7 +1,4 @@
-<div class="note-pagination-links hidden">
-    <%= paginate @notes %>
-</div>
-<div class="notes-holder">
+<div class="notes-holder clearfix">
     <!-- <div class="grid-sizer"></div> -->
     <% @notes.each do |n| %>
     <!-- id: "note-link" + n.id.to_s, -->
@@ -20,6 +17,9 @@
         </div>
         <% end %>
     <% end %>
+</div>
+<div class="note-pagination-links hidden">
+    <%= paginate @notes %>
 </div>
 <%= render 'modals/home' %>
 <%= render 'modals/create' %>

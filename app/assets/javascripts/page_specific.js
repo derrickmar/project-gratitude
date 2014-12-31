@@ -15,7 +15,9 @@ NotesController.prototype.all = function() {
                     // });
                 this.randomRotate($('.note-holder-link'));
 
-                $('.notes-holder').infinitescroll({
+                $('.notes-holder')
+                // .animate({ opacity: 1 }, 1000 )
+                .infinitescroll({
                     navSelector: ".note-pagination-links",
                     nextSelector: ".page > a[rel='next']",
                     itemSelector: ".note-holder-link",
@@ -24,11 +26,16 @@ NotesController.prototype.all = function() {
                         msgText: "Loading new Graddys...",
                         finishedMsg: "That's all the Graddys we have for now. Add more! :)",
                         speed: "fast"
-                    }
+                    },
+                    debug: true,
+                    pixelsFromNavToBottom: 300
                 }, function(arrayOfNewElems) {
+                    // Callback after a page loads
                     var $newElems = $(arrayOfNewElems);
-                    $newElems.imagesLoaded(function() {
-                        isotopy.container.append($newElems).isotope('appended', $newElems);
+                    $(document).ready(function() {
+                        $newElems.imagesLoaded(function() {
+                            isotopy.container.append($newElems).isotope('appended', $newElems);
+                        });
                     });
                 });
             },
@@ -64,23 +71,15 @@ NotesController.prototype.all = function() {
                 console.log("IN RANDOM ROTATE");
                 // debugger;
                 var randRotation = Math.floor((Math.random() * 5) + 1);
-                if (el.length == 1) {
-                    // console.log("LENGTH IS 1");
-                    // debugger;
-                    // console.log(el);
+                el.each(function(index) {
+                    // console.log("LOOPING");
+                    // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
                     randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
-                    // console.log(randRotation);
-                    el.css("transform", "rotate(" + randRotation + "deg)")
-                    // console.log(el.css("background-color", "red"));
-                } else {
-                    el.each(function(index) {
-                        // console.log("LOOPING");
-                        // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-                        randRotation *= index % 2 == 0 ? 1 : -1;
-                        // console.log($(this));
-                        $(this).css("transform", "rotate(" + randRotation + "deg)");
-                    });
-                }
+
+                    // console.log($(this));
+                    $(this).css("transform", "rotate(" + randRotation + "deg)");
+                });
+
             },
             callbacks: function() {
                 console.log("CALLBACKS");

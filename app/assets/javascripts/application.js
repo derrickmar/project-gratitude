@@ -15,7 +15,6 @@
 //= require paloma
 //= require dropzone.min
 //= require bootstrap-sprockets
-//= require masonry/jquery.infinitescroll.min
 //= require jquery.jcrop
 //= require papercrop
 //= require turbolinks
