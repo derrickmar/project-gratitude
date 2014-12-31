@@ -16,29 +16,32 @@ NotesController.prototype.all = function() {
                 this.randomRotate($('.note-holder-link'));
 
                 $('.notes-holder')
-                // .animate({ opacity: 1 }, 1000 )
-                .infinitescroll({
-                    navSelector: ".note-pagination-links",
-                    nextSelector: ".page > a[rel='next']",
-                    itemSelector: ".note-holder-link",
-                    loading: {
-                        img: "http://i.imgur.com/qkKy8.gif",
-                        msgText: "Loading new Graddys...",
-                        finishedMsg: "That's all the Graddys we have for now. Add more! :)",
-                        speed: "fast"
-                    },
-                    debug: true,
-                    pixelsFromNavToBottom: 300
-                }, function(arrayOfNewElems) {
-                    // Callback after a page loads
-                    var $newElems = $(arrayOfNewElems).css({ opacity: 0 });
-                    $(document).ready(function() {
-                        $newElems.imagesLoaded(function() {
-                            $newElems.animate({ opacity: 1 });
-                            isotopy.container.append($newElems).isotope('appended', $newElems);
+                    // .animate({ opacity: 1 }, 1000 )
+                    .infinitescroll({
+                        navSelector: ".note-pagination-links",
+                        nextSelector: ".page > a[rel='next']",
+                        itemSelector: ".note-holder-link",
+                        loading: {
+                            img: "http://i.imgur.com/qkKy8.gif",
+                            msgText: "Loading new Graddys...",
+                            finishedMsg: "That's all the Graddys we have for now. Add more! :)",
+                            speed: "fast"
+                        },
+                        pixelsFromNavToBottom: 300
+                    }, function(arrayOfNewElems) {
+                        // Callback after a page loads
+                        var $newElems = $(arrayOfNewElems).css({
+                            opacity: 0
+                        });
+                        $(document).ready(function() {
+                            $newElems.imagesLoaded(function() {
+                                $newElems.animate({
+                                    opacity: 1
+                                });
+                                isotopy.container.append($newElems).isotope('appended', $newElems);
+                            });
                         });
                     });
-                });
             },
             triggerIsotope: function() {
                 isotopy.container = $('.notes-holder').imagesLoaded(function() {
@@ -142,10 +145,10 @@ NotesController.prototype.all = function() {
                 $('.num-chars').text(total);
             },
             startModalShow: function() {
-                // if (window.location.pathname == '/' && localStorage.visited !== 'true') {
-                localStorage.visited =  true;
-                $('#home-modal').modal('show');
-                // }
+                if (window.location.pathname == '/' && localStorage.visited !== 'true') {
+                    localStorage.visited = true;
+                    $('#home-modal').modal('show');
+                }
                 $('.make-note').on('click', function(e) {
                     console.log('running click note');
                     $('#home-modal').modal('hide');
