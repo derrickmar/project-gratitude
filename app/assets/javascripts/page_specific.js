@@ -31,9 +31,10 @@ NotesController.prototype.all = function() {
                     pixelsFromNavToBottom: 300
                 }, function(arrayOfNewElems) {
                     // Callback after a page loads
-                    var $newElems = $(arrayOfNewElems);
+                    var $newElems = $(arrayOfNewElems).css({ opacity: 0 });
                     $(document).ready(function() {
                         $newElems.imagesLoaded(function() {
+                            $newElems.animate({ opacity: 1 });
                             isotopy.container.append($newElems).isotope('appended', $newElems);
                         });
                     });
@@ -74,6 +75,7 @@ NotesController.prototype.all = function() {
                 el.each(function(index) {
                     // console.log("LOOPING");
                     // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+                    // still should do index if it exists
                     randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
 
                     // console.log($(this));
@@ -134,10 +136,10 @@ NotesController.prototype.all = function() {
                 $('.num-chars').text(total);
             },
             startModalShow: function() {
-                if (window.location.pathname == '/' && localStorage.visited !== 'true') {
-                    localStorage.visited = true;
-                    $('#home-modal').modal('show');
-                }
+                // if (window.location.pathname == '/' && localStorage.visited !== 'true') {
+                localStorage.visited = true;
+                $('#home-modal').modal('show');
+                // }
                 $('.make-note').on('click', function(e) {
                     console.log('running click note');
                     $('#home-modal').modal('hide');

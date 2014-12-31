@@ -285,14 +285,6 @@ body {
     width: 160px;
 }
 
-.pin-show-note {
-    position: absolute;
-    height: 100px;
-    left: -40px;
-    top: -60px;
-    transform: rotate(-15deg);
-}
-
 .Absolute-Center {
   margin: auto;
   position: absolute;
@@ -329,52 +321,70 @@ body {
     text-align: left;
 }
 
-.modal-content {
-    font-family: $primary-font;
-    color: black;
-    border-radius: 0;
-}
+//======== MODALS
 
-.modal-header {
-    margin: 20px;
-}
+.intro-modal {
 
+    .pin-show-note {
+        position: absolute;
+        height: 100px;
+        left: -40px;
+        top: -60px;
+        transform: rotate(-15deg);
+        z-index: 1;
+    }
 
-.modal-body {
-    .line {
-        width: 3px;
+    .modal-content {
+        font-family: $primary-font;
         color: black;
-        height: 500px;
+        border-radius: 0;
+        padding: 20px;
+        background-image: image-url('parchment6.png');
+//        background-size: 250px 203px;
+//        background-size: cover;
+        //        background-image: image-url('parchment3.jpg');
+        background-size: 250px 250px;
     }
-    p {
-        font-size: 20px;
-        width: 80%;
-    }
+
     h2 {
-        font-weight: 5;
-        color: blue;
-    }
-    .cta {
-        margin-top: 4%;
-        height: 60px;
-        font-size: 25px;
-        background-color: $secondary;
-        color: white;
-        transition: .5s;
-        &:hover {
-            color: $secondary;
-            background-color: white;
-        }
-    }
-    .counter {
-        margin-top: -15%;
-        .number {
-            font-size: 40px;
-        }
-    }
-    .main-modal {
+        color: $secondary;
     }
 }
+
+
+//.modal-body {
+//    .line {
+//        width: 3px;
+//        color: black;
+//        height: 500px;
+//    }
+//    p {
+//        font-size: 20px;
+//        width: 80%;
+//    }
+//    h2 {
+//        font-weight: 5;
+//        color: blue;
+//    }
+//    .cta {
+//        margin-top: 4%;
+//        height: 60px;
+//        font-size: 25px;
+//        background-color: $secondary;
+//        color: white;
+//        transition: .5s;
+//        &:hover {
+//            color: $secondary;
+//            background-color: white;
+//        }
+//    }
+//    .counter {
+//        margin-top: -15%;
+//        .number {
+//            font-size: 40px;
+//        }
+//    }
+//}
 
 
 .notes-holder {
@@ -387,20 +397,27 @@ body {
 
     .note-holder-link {
         margin-bottom: 45px;
+        webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        webkit-transform: translate3d(0,0,0);
     }
 
     .note-holder {
         min-width: 250px;
         max-width: 320px;
-        background-color: white;
+        //background-color: white;
         word-wrap: break-word;
         text-decoration: none;
         color: black;
         padding-top: 10px;
 
         .note-image {
-            border: 10px solid white;
-            padding: 0px 10px 0px 10px;
+            //border: 10px solid white;
+//            border-image: image-url('parchment6.png') 30 30 repeat;
+            border-image-source: image-url('parchment3.jpg');
+            border-image-width: 100%;
+            border-image-repeat: repeat;
+            padding: 10px;
 
             img {
                 width: 100%;
@@ -409,7 +426,7 @@ body {
             }
         }
         .note {
-            background-color: white;
+            background-image: image-url('parchment3.jpg');
             font-size: 16px;
             //border-bottom: 1px solid lightgray;
             padding: 0px 20px 10px 20px;

@@ -1,0 +1,13 @@
+<div class="modal fade intro-modal" id="<%= modalID %>" tabindex="-1" role="dialog" aria-labelledby="<%= modalID %>" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+     <%= image_tag "pin.png", class: "pin-show-note" %>
+    <div class="modal-content">
+      <div class="modal-header">
+      	<%= yield_content! :modal_header %>
+      </div>
+      <div class="modal-body row">
+      	<%= yield_content! :modal_body %>
+      </div>
+    </div>
+  </div>
+</div>

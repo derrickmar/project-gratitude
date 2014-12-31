@@ -21,8 +21,9 @@
 <div class="note-pagination-links hidden">
     <%= paginate @notes %>
 </div>
-<%= render 'modals/home' %>
+
+<%= render partial: "modals/home", layout: "modals/modal_layout",
+    locals: { modalID: "home-modal"} %>
 <%= render 'modals/create' %>
 <%= render 'modals/show_note' %>
 <%= render 'modals/share' %>
-    
