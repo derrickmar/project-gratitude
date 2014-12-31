@@ -28,6 +28,7 @@ doc/
 *.mp4
 *.odt
 *.docx
+*.psd
 /path/
 # Ignore application configuration
 /config/application.yml

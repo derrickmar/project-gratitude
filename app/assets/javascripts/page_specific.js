@@ -128,7 +128,7 @@ NotesController.prototype.all = function() {
                 console.log('running modals init right?');
                 this.bindListeners();
                 this.startModalShow();
-                $('#create-new-note').on('click', function() {
+                $('#create-new-note, #show-note-popup-btn').on('click', function() {
                     console.log("it doesn't show it multiple times?");
                     $('#create-modal').modal('show');
                 })
@@ -182,6 +182,8 @@ NotesController.prototype.all = function() {
                     }
                 });
 
+
+                //  If url has ?id param show note
                 var search = location.search.substring(1);
                 var params = search ? JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
                     function(key, value) {
@@ -199,6 +201,18 @@ NotesController.prototype.all = function() {
                         console.log("Something wrong with ajax call");
                     });
                 }
+
+                // show note popup btn when scroll past header (using animted.css)
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() > 124) {
+                        $('#show-note-popup-btn').removeClass('hidden');
+                        $('#show-note-popup-btn').removeClass('bounceOut');
+                        $('#show-note-popup-btn').addClass('bounceIn');
+                    } else {
+                        $('#show-note-popup-btn').removeClass('bounceIn');
+                        $('#show-note-popup-btn').addClass('bounceOut');
+                    }
+                });
 
                 // initialize modals
                 $(document).ready(function() {
