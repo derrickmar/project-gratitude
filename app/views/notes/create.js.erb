@@ -24,7 +24,7 @@ var $notejq = $(note_content);
 // only keeps content within itemSelector of isotope!
 
 // Call image loaded so positioning is correct
-$('.notes-holder').imagesLoaded(function() {
+$notejq.imagesLoaded(function() {
 	$('.notes-holder').isotope('insert', $notejq);
 });
 

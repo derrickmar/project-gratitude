@@ -82,11 +82,11 @@ NotesController.prototype.all = function() {
                     if (el.length == 1) {
                         randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
                     } else {
-                        console.log("INDEX", index);
-                        console.log($(this).text());
+                        // console.log("INDEX", index);
+                        // console.log($(this).text());
                         randRotation *= index % 2 == 0 ? 1 : -1;
                     }
-                    console.log(randRotation);
+                    // console.log(randRotation);
                     // console.log($(this));
                     $(this).css("transform", "rotate(" + randRotation + "deg)");
                 });
