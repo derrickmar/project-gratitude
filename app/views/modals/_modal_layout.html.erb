@@ -3,9 +3,14 @@
      <%= image_tag "pin.png", class: "pin-show-note" %>
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span class="x-button" aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
       	<%= yield_content! :modal_header %>
       </div>
-      <div class="modal-body row">
+      <%= yield_content! :above_modal_body %>
+      <div id="<%= modalBodyID %>" class="modal-body row">
       	<%= yield_content! :modal_body %>
       </div>
     </div>

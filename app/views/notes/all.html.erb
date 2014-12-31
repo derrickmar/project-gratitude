@@ -23,7 +23,10 @@
 </div>
 
 <%= render partial: "modals/home", layout: "modals/modal_layout",
-    locals: { modalID: "home-modal"} %>
+    locals: { modalID: "home-modal",  modalBodyID: "home-modal-body"} %>
 <%= render partial: "modals/create", layout: "modals/modal_layout",
-    locals: { modalID: "create-modal"} %><%= render 'modals/show_note' %>
-<%= render 'modals/share' %>
+    locals: { modalID: "create-modal",  modalBodyID: "create-modal-body"} %>
+<%= render partial: "modals/show_note", layout: "modals/modal_layout",
+    locals: { modalID: "show-note-modal", modalBodyID: "share-note-modal-body"} %>
+<%= render partial: "modals/share", layout: "modals/modal_layout",
+    locals: { modalID: "share-modal", modalBodyID: "share-modal-body"} %>

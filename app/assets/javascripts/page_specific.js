@@ -71,13 +71,19 @@ NotesController.prototype.all = function() {
             randomRotate: function(el) {
                 console.log("IN RANDOM ROTATE");
                 // debugger;
-                var randRotation = Math.floor((Math.random() * 5) + 1);
                 el.each(function(index) {
                     // console.log("LOOPING");
                     // randRotation *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
                     // still should do index if it exists
-                    randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
-
+                    var randRotation = Math.floor((Math.random() * 5) + 1);
+                    if (el.length == 1) {
+                        randRotation *= Math.random() > 0.5 == 0 ? 1 : -1;
+                    } else {
+                        console.log("INDEX", index);
+                        console.log($(this).text());
+                        randRotation *= index % 2 == 0 ? 1 : -1;
+                    }
+                    console.log(randRotation);
                     // console.log($(this));
                     $(this).css("transform", "rotate(" + randRotation + "deg)");
                 });
@@ -137,7 +143,7 @@ NotesController.prototype.all = function() {
             },
             startModalShow: function() {
                 // if (window.location.pathname == '/' && localStorage.visited !== 'true') {
-                localStorage.visited = true;
+                localStorage.visited =  true;
                 $('#home-modal').modal('show');
                 // }
                 $('.make-note').on('click', function(e) {
